@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método REVELAR — Lucas Radin | Hipnoterapia de Transformação Profunda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #0d0118;
+    --violet: #1a0533;
+    --indigo: #2d1b69;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --lavender: #9b7fd4;
+    --pearl: #f5f0ff;
+    --muted: #a89ec0;
+    --text: #f0ebff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* STARFIELD */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(201,168,76,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 60%, rgba(155,127,212,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 80%, rgba(201,168,76,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 35%, rgba(155,127,212,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 85%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 65%, rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 45%, rgba(255,255,255,0.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 25%, rgba(155,127,212,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 50%, rgba(201,168,76,0.15) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(13,1,24,0.95), transparent);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 24px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--deep);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45,27,105,0.6) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--pearl);
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-title span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--lavender);
+    margin-bottom: 32px;
+    line-height: 1.4;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 48px;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-desc strong {
+    color: var(--pearl);
+    font-weight: 400;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--deep);
+    padding: 18px 40px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(201,168,76,0.4);
+  }
+
+  .btn-primary svg { width: 18px; height: 18px; }
+
+  .hero-right {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 0.3s forwards;
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 60%, transparent 100%),
+                linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 60%, transparent 100%),
+                        linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 85%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+  }
+
+  /* MÉTODO REVELAR — letras */
+  .revelar-section {
+    padding: 120px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    text-align: center;
+    color: var(--pearl);
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 620px;
+    margin: 0 auto 80px;
+  }
+
+  .revelar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .revelar-step {
+    background: rgba(45,27,105,0.2);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 40px 20px 32px;
+    text-align: center;
+    position: relative;
+    transition: all 0.4s;
+    cursor: default;
+  }
+
+  .revelar-step:hover {
+    background: rgba(45,27,105,0.5);
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+    z-index: 2;
+  }
+
+  .revelar-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .revelar-word {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--lavender);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .revelar-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* PORTAL — descrição do método */
+  .portal-section {
+    padding: 120px 80px;
+    background: linear-gradient(to bottom, transparent, rgba(45,27,105,0.15), transparent);
+    position: relative;
+    z-index: 2;
+  }
+
+  .portal-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .portal-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 300;
+    color: var(--pearl);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .portal-text h2 em { color: var(--gold); font-style: italic; }
+
+  .portal-text p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .portal-text p strong { color: var(--pearl); font-weight: 400; }
+
+  .portal-features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .portal-feature {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .portal-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+  }
+
+  .portal-feature h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--pearl);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .portal-feature p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* PARA QUEM É */
+  .audience-section {
+    padding: 120px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .audience-card {
+    background: rgba(26,5,51,0.5);
+    border: 1px solid rgba(155,127,212,0.1);
+    padding: 48px 40px;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .audience-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--gold);
+    transition: height 0.4s;
+  }
+
+  .audience-card:hover::before { height: 100%; }
+  .audience-card:hover { background: rgba(45,27,105,0.4); }
+
+  .audience-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--pearl);
+    margin-bottom: 20px;
+  }
+
+  .audience-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .audience-card ul li {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .audience-card ul li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 8px;
+    top: 5px;
+  }
+
+  /* PODE AJUDAR */
+  .conditions-section {
+    padding: 100px 80px;
+    background: rgba(45,27,105,0.1);
+    position: relative;
+    z-index: 2;
+  }
+
+  .conditions-cloud {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .condition-tag {
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--muted);
+    padding: 8px 18px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .condition-tag:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* SOBRE LUCAS */
+  .about-section {
+    padding: 120px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-imgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .about-imgs img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    filter: grayscale(20%) sepia(10%);
+    border: 1px solid rgba(201,168,76,0.15);
+    transition: all 0.4s;
+  }
+
+  .about-imgs img:hover {
+    filter: grayscale(0%) sepia(0%);
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .about-imgs img:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/10;
+  }
+
+  .about-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3vw, 44px);
+    font-weight: 300;
+    color: var(--pearl);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .about-text h2 em { color: var(--gold); font-style: italic; }
+
+  .about-name-sub {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--lavender);
+    margin-bottom: 32px;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .about-text p strong { color: var(--pearl); font-weight: 400; }
+
+  .credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .credential {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .credential::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* CERTS */
+  .certs-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .certs-row img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid rgba(201,168,76,0.2);
+    transition: all 0.3s;
+    filter: grayscale(30%);
+  }
+
+  .certs-row img:hover {
+    border-color: var(--gold);
+    filter: grayscale(0%);
+  }
+
+  /* DEPOIMENTOS */
+  .testimonials-section {
+    padding: 120px 80px;
+    background: linear-gradient(to bottom, transparent, rgba(45,27,105,0.1), transparent);
+    position: relative;
+    z-index: 2;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 1100px;
+    margin: 0 auto 8px;
+  }
+
+  .testimonials-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .testimonial-img {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    border: 1px solid rgba(201,168,76,0.1);
+    transition: all 0.4s;
+    filter: brightness(0.9);
+    cursor: pointer;
+  }
+
+  .testimonial-img:hover {
+    border-color: rgba(201,168,76,0.5);
+    filter: brightness(1);
+    transform: scale(1.02);
+    z-index: 2;
+    position: relative;
+  }
+
+  /* INVESTIMENTO */
+  .pricing-section {
+    padding: 120px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    background: rgba(26,5,51,0.5);
+    border: 1px solid rgba(155,127,212,0.15);
+    padding: 48px 36px;
+    text-align: center;
+    position: relative;
+    transition: all 0.4s;
+  }
+
+  .pricing-card.featured {
+    background: rgba(45,27,105,0.4);
+    border-color: rgba(201,168,76,0.4);
+    transform: scaleY(1.02);
+    z-index: 2;
+  }
+
+  .pricing-card.featured::before {
+    content: 'MAIS ESCOLHIDO';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--deep);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 5px 16px;
+  }
+
+  .pricing-card:hover:not(.featured) {
+    border-color: rgba(201,168,76,0.3);
+    background: rgba(45,27,105,0.3);
+  }
+
+  .pricing-name {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--lavender);
+    margin-bottom: 24px;
+  }
+
+  .pricing-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pricing-main span {
+    font-size: 22px;
+    vertical-align: super;
+  }
+
+  .pricing-period {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .pricing-avista {
+    font-size: 13px;
+    color: rgba(155,127,212,0.7);
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .pricing-info {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .pricing-info strong { color: var(--pearl); font-weight: 400; }
+
+  .btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 14px 28px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s;
+  }
+
+  .btn-whatsapp:hover {
+    background: var(--gold);
+    color: var(--deep);
+  }
+
+  .pricing-card.featured .btn-whatsapp {
+    background: var(--gold);
+    color: var(--deep);
+  }
+
+  .pricing-card.featured .btn-whatsapp:hover {
+    background: var(--gold-light);
+  }
+
+  /* CTA FINAL */
+  .cta-section {
+    padding: 160px 80px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    background: radial-gradient(ellipse at center, rgba(45,27,105,0.3) 0%, transparent 70%);
+  }
+
+  .cta-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    color: var(--pearl);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .cta-section h2 em { color: var(--gold); font-style: italic; }
+
+  .cta-section p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 48px;
+    line-height: 1.8;
+  }
+
+  .btn-cta-final {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--deep);
+    padding: 22px 56px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+  }
+
+  .btn-cta-final:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 48px rgba(201,168,76,0.5);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 48px 80px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: rgba(168,158,192,0.5);
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .footer-exu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .footer-exu img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+
+  .footer-exu img:hover { opacity: 1; }
+
+  /* DIVIDER */
+  .gold-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 24px;
+  }
+
+  /* ANIMAÇÕES */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-left { padding: 100px 24px 40px; }
+
+    .hero-right {
+      height: 60vw;
+      min-height: 300px;
+    }
+
+    .revelar-section,
+    .portal-section,
+    .audience-section,
+    .conditions-section,
+    .about-section,
+    .testimonials-section,
+    .pricing-section,
+    .cta-section { padding: 80px 24px; }
+
+    .revelar-grid { grid-template-columns: repeat(4, 1fr); }
+    .revelar-step:nth-child(n+5) { border-top: none; }
+
+    .portal-inner { grid-template-columns: 1fr; gap: 40px; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-imgs { grid-template-columns: 1fr 1fr; }
+    .about-imgs img:first-child { grid-column: 1 / -1; }
+
+    .testimonials-grid,
+    .testimonials-grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .pricing-grid { grid-template-columns: 1fr; gap: 8px; }
+    .pricing-card.featured { transform: none; }
+
+    footer {
+      padding: 40px 24px;
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .certs-row { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">LUCAS RADIN</a>
+  <a href="https://wa.me/5548999999999?text=Olá%20Lucas%2C%20quero%20saber%20mais%20sobre%20o%20Método%20REVELAR" class="nav-cta" target="_blank">Agendar sessão</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <p class="hero-eyebrow">Hipnoterapia de Transformação Profunda</p>
+    <h1 class="hero-title">Método<br><span>REVELAR</span></h1>
+    <p class="hero-subtitle">O véu cai. Você enxerga.<br>Você entende. Você desperta.</p>
+    <p class="hero-desc">
+      Uma sessão que acessa o que está além do tempo, do espaço e da matéria. <strong>Sua fonte de sabedoria infinita</strong> — sempre soube a verdade, sempre carregou todas as respostas. Agora é hora de acessá-las.
+    </p>
+    <a href="https://wa.me/5548999999999?text=Olá%20Lucas%2C%20quero%20saber%20mais%20sobre%20o%20Método%20REVELAR" class="btn-primary" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L0 24l6.347-1.499A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.663-.518-5.187-1.42l-.371-.22-3.868.913.978-3.773-.242-.389A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Quero minha sessão
+    </a>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img"
+      src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/Lucas%20vers%C3%A3o%20frequencias.jpg"
+      alt="Lucas Radin — Hipnoterapeuta">
+  </div>
+</section>
+
+<!-- MÉTODO REVELAR -->
+<section class="revelar-section">
+  <p class="section-label">O método</p>
+  <h2 class="section-title">Uma jornada de <em>7 etapas</em><br>para a sua transformação</h2>
+  <p class="section-intro">Cada letra é um portal. Cada etapa, um passo mais fundo em direção à sua verdade.</p>
+
+  <div class="revelar-grid">
+    <div class="revelar-step">
+      <span class="revelar-letter">R</span>
+      <span class="revelar-word">Resgatar</span>
+      <p class="revelar-desc">Acessamos a origem do que te limita — a raiz real do padrão que se repete.</p>
+    </div>
+    <div class="revelar-step">
+      <span class="revelar-letter">E</span>
+      <span class="revelar-word">Educar</span>
+      <p class="revelar-desc">Ressignificamos a experiência, dissolvendo a carga emocional que ela carrega.</p>
+    </div>
+    <div class="revelar-step">
+      <span class="revelar-letter">V</span>
+      <span class="revelar-word">Valorizar</span>
+      <p class="revelar-desc">Integramos aquela parte de você com acolhimento — sem os pesos do passado.</p>
+    </div>
+    <div class="revelar-step">
+      <span class="revelar-letter">E</span>
+      <span class="revelar-word">Elevar</span>
+      <p class="revelar-desc">Plantamos a nova programação: o que você deseja sentir, ser e viver.</p>
+    </div>
+    <div class="revelar-step">
+      <span class="revelar-letter">L</span>
+      <span class="revelar-word">Libertar</span>
+      <p class="revelar-desc">Você se despede definitivamente do que não pertence mais à sua história.</p>
+    </div>
+    <div class="revelar-step">
+      <span class="revelar-letter">A</span>
+      <span class="revelar-word">Agradecer</span>
+      <p class="revelar-desc">Gratidão pelos aprendizados — transmutando o pesado em sabedoria e leveza.</p>
+    </div>
+    <div class="revelar-step">
+      <span class="revelar-letter">R</span>
+      <span class="revelar-word">Renascer</span>
+      <p class="revelar-desc">Você emerge em uma versão mais autêntica, alinhada com quem realmente é.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTAL -->
+<section class="portal-section">
+  <div class="portal-inner">
+    <div class="portal-text">
+      <h2>Uma sessão que vai além<br>do que você <em>conhece</em></h2>
+      <p>Durante a sessão do Método REVELAR você acessa sua própria fonte de sabedoria infinita — o que muitos chamam de Ser Superior, Eu Superior ou Consciência Expandida.</p>
+      <p>Não há intermediários. <strong>Você sente, vive e experimenta sua própria verdade direto da fonte.</strong> Quando você se conecta com essa camada mais profunda de si, tudo muda.</p>
+    </div>
+    <div class="portal-features">
+      <div class="portal-feature">
+        <div class="portal-icon">◈</div>
+        <div>
+          <h4>Reconectar</h4>
+          <p>Você abre o canal com sua multidimensionalidade, seus guias e sua consciência expandida — de forma definitiva.</p>
+        </div>
+      </div>
+      <div class="portal-feature">
+        <div class="portal-icon">◈</div>
+        <div>
+          <h4>Liberar</h4>
+          <p>Você não foge temporariamente dos condicionamentos. Você se desprende profunda e definitivamente, seguindo seu caminho autêntico.</p>
+        </div>
+      </div>
+      <div class="portal-feature">
+        <div class="portal-icon">◈</div>
+        <div>
+          <h4>Descobrir</h4>
+          <p>Você encontra sua verdadeira identidade de alma, seus talentos únicos e a razão pela qual escolheu estar aqui agora.</p>
+        </div>
+      </div>
+      <div class="portal-feature">
+        <div class="portal-icon">◈</div>
+        <div>
+          <h4>Ativar</h4>
+          <p>Você não depende de ninguém para seu bem-estar. Você ativa seus próprios mecanismos internos de cura e transformação.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section class="audience-section">
+  <p class="section-label">Para quem é</p>
+  <h2 class="section-title">O REVELAR foi criado<br>para quem <em>sente o chamado</em></h2>
+  <div class="gold-divider"></div>
+
+  <div class="audience-grid">
+    <div class="audience-card">
+      <h3>Buscadores</h3>
+      <ul>
+        <li>Você busca respostas além do mundo físico</li>
+        <li>Sente que há muito mais na existência do que te ensinaram</li>
+        <li>Questiona o significado profundo da vida</li>
+        <li>Busca sabedoria que transcende o conhecimento convencional</li>
+      </ul>
+    </div>
+    <div class="audience-card">
+      <h3>Transformadores</h3>
+      <ul>
+        <li>Quer mudar sua vida de forma profunda e definitiva</li>
+        <li>Sente insatisfação com a direção atual</li>
+        <li>Busca superar padrões e bloqueios que te impedem</li>
+        <li>Precisa de clareza para criar a vida que realmente deseja</li>
+      </ul>
+    </div>
+    <div class="audience-card">
+      <h3>Exploradores da alma</h3>
+      <ul>
+        <li>Quer descobrir quem você realmente é</li>
+        <li>Sente que há talentos ocultos dentro de você</li>
+        <li>Quer compreender sua jornada única nesta encarnação</li>
+        <li>Busca reconectar-se com sua identidade profunda</li>
+      </ul>
+    </div>
+    <div class="audience-card">
+      <h3>Starseeds e contactados</h3>
+      <ul>
+        <li>Sempre se sentiu diferente ou deslocado neste mundo</li>
+        <li>Quer conectar-se com sua família estelar</li>
+        <li>Tem a sensação de ter sido visitado ou contatado</li>
+        <li>Busca compreender sua verdadeira origem e linhagem cósmica</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PODE AJUDAR COM -->
+<section class="conditions-section">
+  <p class="section-label">Pode ajudar com</p>
+  <h2 class="section-title" style="margin-bottom:16px;">O que o Método REVELAR<br>pode <em>transformar</em></h2>
+  <div class="gold-divider"></div>
+  <div class="conditions-cloud">
+    <span class="condition-tag">Ansiedade</span>
+    <span class="condition-tag">Depressão</span>
+    <span class="condition-tag">Traumas</span>
+    <span class="condition-tag">Fobias</span>
+    <span class="condition-tag">Estresse</span>
+    <span class="condition-tag">Distúrbios do sono</span>
+    <span class="condition-tag">Compulsão alimentar</span>
+    <span class="condition-tag">Síndrome do pânico</span>
+    <span class="condition-tag">TOC</span>
+    <span class="condition-tag">Vícios</span>
+    <span class="condition-tag">Fibromialgia</span>
+    <span class="condition-tag">Psoríase</span>
+    <span class="condition-tag">Obesidade</span>
+    <span class="condition-tag">Obsessões</span>
+    <span class="condition-tag">Asma</span>
+    <span class="condition-tag">Alergias</span>
+    <span class="condition-tag">Insegurança</span>
+    <span class="condition-tag">Tristeza profunda</span>
+    <span class="condition-tag">Complexo de inferioridade</span>
+    <span class="condition-tag">Questões sexuais</span>
+    <span class="condition-tag">Medo de altura</span>
+    <span class="condition-tag">Medo de dirigir</span>
+    <span class="condition-tag">Medo de água</span>
+    <span class="condition-tag">Medo do escuro</span>
+    <span class="condition-tag">Medo de animais</span>
+    <span class="condition-tag">Medo de injeção</span>
+    <span class="condition-tag">Medo de palhaços</span>
+    <span class="condition-tag">E muito mais...</span>
+  </div>
+</section>
+
+<!-- SOBRE LUCAS -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-imgs">
+      <img src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/lucas%20hipnotizando%20michael.jpg" alt="Lucas Radin em sessão">
+      <img src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/lucas%20com%20giancarlo%20russo.jpg" alt="Lucas Radin com Giancarlo Russo">
+      <img src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/certificado%20hypnocell.jpg" alt="Certificado HypnoCell Suíça">
+    </div>
+    <div class="about-text">
+      <h2>Lucas<br><em>Radin</em></h2>
+      <p class="about-name-sub">Hipnoterapeuta · Terapeuta · Facilitador</p>
+      <p>Há mais de 8 anos atuando como hipnoterapeuta, Lucas Radin construiu uma trajetória que une rigor técnico, vivência espiritual e presença humana genuína.</p>
+      <p>Hipnoterapeuta certificado <strong>OMNI Brasil</strong>, com especialização em <strong>HypnoCell na Suíça</strong> e formação em hipnoterapia de regressão à vidas passadas (QHHT — Dolores Cannon). Co-autor do livro <strong>O Poder da Escolha Certa</strong>.</p>
+      <p>Reikiano, constelador familiar, formado em TQC®, facilitador de jornadas de autoconhecimento e professor na <strong>Escola Vida Huna de Valor</strong>. Vasta experiência em seminários de Ho'oponopono nacionais e internacionais.</p>
+      <p>Produtor de conteúdo com mais de <strong>300 mil seguidores</strong> nas redes sociais.</p>
+      <div class="credentials">
+        <div class="credential">Hipnoterapeuta OMNI Brasil — mais de 8 anos</div>
+        <div class="credential">Especialização HypnoCell — Suíça</div>
+        <div class="credential">QHHT — Método Dolores Cannon</div>
+        <div class="credential">Co-autor · O Poder da Escolha Certa</div>
+        <div class="credential">Reiki · Constelação Familiar · Ho'oponopono · TQC®</div>
+      </div>
+      <div class="certs-row">
+        <img src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/certificado%20omni.jpg" alt="Certificado OMNI">
+        <img src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/certificado%20hypnocell.jpg" alt="Certificado HypnoCell">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testimonials-section">
+  <p class="section-label">Transformações reais</p>
+  <h2 class="section-title">O que dizem quem<br>já <em>atravessou o portal</em></h2>
+  <div class="gold-divider"></div>
+
+  <div class="testimonials-grid">
+    <img class="testimonial-img" src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/depoimento1.jpg" alt="Depoimento 1">
+    <img class="testimonial-img" src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/depoimento2.jpg" alt="Depoimento 2">
+    <img class="testimonial-img" src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/depoimento3.jpg" alt="Depoimento 3">
+    <img class="testimonial-img" src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/depoimento4.jpg" alt="Depoimento 4">
+  </div>
+  <div style="height:8px"></div>
+  <div class="testimonials-grid-2">
+    <img class="testimonial-img" src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/depoimento5.jpg" alt="Depoimento 5">
+    <img class="testimonial-img" src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/depoimento6.jpg" alt="Depoimento 6">
+    <img class="testimonial-img" src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/depoimento7.jpg" alt="Depoimento 7">
+    <img class="testimonial-img" src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/depoimento8.jpg" alt="Depoimento 8">
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section class="pricing-section">
+  <p class="section-label">Investimento</p>
+  <h2 class="section-title">Escolha como quer<br><em>começar sua jornada</em></h2>
+  <p class="section-intro" style="margin-bottom:60px;">Sessões de 2h a 2h30. Presencial em Itapema/SC ou online para todo o Brasil.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <p class="pricing-name">Sessão Avulsa</p>
+      <p class="pricing-main"><span>8×</span> 97</p>
+      <p class="pricing-period">ou R$ 750 à vista</p>
+      <p class="pricing-avista">parcelado sem juros</p>
+      <p class="pricing-info">Uma sessão completa do Método REVELAR. <strong>Duração de 2h a 2h30.</strong> Presencial ou online.</p>
+      <a href="https://wa.me/5548999999999?text=Olá%20Lucas%2C%20quero%20agendar%20uma%20sessão%20avulsa%20do%20Método%20REVELAR" class="btn-whatsapp" target="_blank">
+        Agendar via WhatsApp
+      </a>
+    </div>
+
+    <div class="pricing-card featured">
+      <p class="pricing-name">Pacote 3 Sessões</p>
+      <p class="pricing-main"><span>8×</span> 247</p>
+      <p class="pricing-period">ou R$ 1.900 à vista</p>
+      <p class="pricing-avista">parcelado sem juros</p>
+      <p class="pricing-info">A jornada completa de transformação. <strong>Três sessões</strong> para integração profunda e resultados duradouros.</p>
+      <a href="https://wa.me/5548999999999?text=Olá%20Lucas%2C%20quero%20saber%20mais%20sobre%20o%20pacote%20de%203%20sessões%20do%20Método%20REVELAR" class="btn-whatsapp" target="_blank">
+        Quero este pacote
+      </a>
+    </div>
+
+    <div class="pricing-card">
+      <p class="pricing-name">Pacote 2 Sessões</p>
+      <p class="pricing-main"><span>8×</span> 182</p>
+      <p class="pricing-period">ou R$ 1.400 à vista</p>
+      <p class="pricing-avista">parcelado sem juros</p>
+      <p class="pricing-info"><strong>Duas sessões</strong> para aprofundar o processo e consolidar as transformações iniciadas.</p>
+      <a href="https://wa.me/5548999999999?text=Olá%20Lucas%2C%20quero%20saber%20mais%20sobre%20o%20pacote%20de%202%20sessões%20do%20Método%20REVELAR" class="btn-whatsapp" target="_blank">
+        Agendar via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <h2>Você já carrega<br>todas as <em>respostas.</em><br>Hora de acessá-las.</h2>
+  <p>O primeiro passo é uma conversa. Sem compromisso, sem pressão. Só você e a possibilidade de uma nova vida.</p>
+  <a href="https://wa.me/5548999999999?text=Olá%20Lucas%2C%20quero%20saber%20mais%20sobre%20o%20Método%20REVELAR" class="btn-cta-final" target="_blank">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L0 24l6.347-1.499A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.663-.518-5.187-1.42l-.371-.22-3.868.913.978-3.773-.242-.389A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Conversar com Lucas
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LUCAS RADIN</div>
+  <div class="footer-text">
+    © 2025 Lucas Radin · Método REVELAR<br>
+    Hipnoterapia Presencial em Itapema/SC · Online para todo o Brasil
+  </div>
+  <div class="footer-exu">
+    <img src="https://raw.githubusercontent.com/lucasargenton/lucasradin/main/laroye%20exu.png" alt="Laroye Exu">
+  </div>
+</footer>
+
+</body>
+</html>
