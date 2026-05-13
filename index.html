@@ -22,21 +22,30 @@
 
 - { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+scroll-behavior: smooth;
+background-color: #0d0118;
+}
 
 body {
-background: var(–deep);
-color: var(–text);
+background-color: #0d0118 !important;
+color: #f0ebff;
 font-family: ‘Outfit’, sans-serif;
 font-weight: 300;
 overflow-x: hidden;
+min-height: 100vh;
 }
+
+section { position: relative; }
 
 /* STARFIELD */
 body::before {
 content: ‘’;
 position: fixed;
 inset: 0;
+z-index: 0;
+pointer-events: none;
+background-color: #0d0118;
 background-image:
 radial-gradient(1px 1px at 10% 20%, rgba(201,168,76,0.4) 0%, transparent 100%),
 radial-gradient(1px 1px at 30% 60%, rgba(155,127,212,0.3) 0%, transparent 100%),
@@ -1175,44 +1184,6 @@ footer { padding: 40px 24px; flex-direction: column; gap: 24px; text-align: cent
         <li>Busca compreender sua verdadeira origem e linhagem cósmica</li>
       </ul>
     </div>
-  </div>
-</section>
-
-<!-- PODE AJUDAR COM -->
-
-<section class="conditions-section">
-  <p class="section-label">Pode ajudar com</p>
-  <h2 class="section-title" style="margin-bottom:16px;">O que o Método REVELAR<br>pode <em>transformar</em></h2>
-  <div class="gold-divider"></div>
-  <div class="conditions-cloud">
-    <span class="condition-tag">Ansiedade</span>
-    <span class="condition-tag">Depressão</span>
-    <span class="condition-tag">Traumas</span>
-    <span class="condition-tag">Fobias</span>
-    <span class="condition-tag">Estresse</span>
-    <span class="condition-tag">Distúrbios do sono</span>
-    <span class="condition-tag">Compulsão alimentar</span>
-    <span class="condition-tag">Síndrome do pânico</span>
-    <span class="condition-tag">TOC</span>
-    <span class="condition-tag">Vícios</span>
-    <span class="condition-tag">Fibromialgia</span>
-    <span class="condition-tag">Psoríase</span>
-    <span class="condition-tag">Obesidade</span>
-    <span class="condition-tag">Obsessões</span>
-    <span class="condition-tag">Asma</span>
-    <span class="condition-tag">Alergias</span>
-    <span class="condition-tag">Insegurança</span>
-    <span class="condition-tag">Tristeza profunda</span>
-    <span class="condition-tag">Complexo de inferioridade</span>
-    <span class="condition-tag">Questões sexuais</span>
-    <span class="condition-tag">Medo de altura</span>
-    <span class="condition-tag">Medo de dirigir</span>
-    <span class="condition-tag">Medo de água</span>
-    <span class="condition-tag">Medo do escuro</span>
-    <span class="condition-tag">Medo de animais</span>
-    <span class="condition-tag">Medo de injeção</span>
-    <span class="condition-tag">Medo de palhaços</span>
-    <span class="condition-tag">E muito mais...</span>
   </div>
 </section>
 
