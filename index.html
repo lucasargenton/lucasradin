@@ -243,12 +243,26 @@
     margin: 0 auto 80px;
   }
 
+  /* ===== ALTERADO: revelar-grid sem colunas fixas ===== */
   .revelar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
     gap: 2px;
     max-width: 1100px;
     margin: 0 auto;
+  }
+
+  /* ===== NOVO: linha 1 com 4 colunas (REVE) ===== */
+  .revelar-row-1 {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 2px;
+  }
+
+  /* ===== NOVO: linha 2 com 3 colunas (LAR) ===== */
+  .revelar-row-2 {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 825px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .revelar-step {
@@ -278,8 +292,9 @@
     display: block;
   }
 
+  /* ===== ALTERADO: font-size de 11px para 13px ===== */
   .revelar-word {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -288,10 +303,11 @@
     display: block;
   }
 
+  /* ===== ALTERADO: font-size de 12px para 14px, line-height de 1.6 para 1.75 ===== */
   .revelar-desc {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.75;
   }
 
   .portal-section {
@@ -423,7 +439,7 @@
     width: 100%; aspect-ratio: 1; object-fit: cover;
     filter: grayscale(20%) sepia(10%);
     border: 1px solid rgba(201,168,76,0.15);
-    transition: all 0.4s;
+    transition: all 0.4f;
   }
 
   .about-imgs img:hover { filter: grayscale(0%) sepia(0%); border-color: rgba(201,168,76,0.4); }
@@ -600,7 +616,14 @@
     .conditions-section, .about-section, .testimonials-section,
     .pricing-section, .cta-section { padding: 80px 24px; }
 
-    .revelar-grid { grid-template-columns: 1fr; gap: 8px; }
+    /* ===== ALTERADO: mobile agora cobre row-1 e row-2 também ===== */
+    .revelar-grid,
+    .revelar-row-1,
+    .revelar-row-2 {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      gap: 8px;
+    }
     .revelar-step { display: block; padding: 36px 32px; text-align: center; }
     .revelar-letter { font-size: 72px; margin-bottom: 12px; }
     .revelar-word { font-size: 12px; margin-bottom: 10px; }
@@ -659,7 +682,7 @@
   <h2 class="section-title">Uma jornada de <em>7 etapas</em><br>para a sua transformação</h2>
   <p class="section-intro">Cada letra é um portal. Cada etapa, um passo mais fundo em direção à sua verdade.</p>
 
-  <div class="revelar-grid">
+  <div class="revelar-grid revelar-row-1">
     <div class="revelar-step">
       <span class="revelar-letter">R</span>
       <span class="revelar-word">Resgatar</span>
@@ -680,6 +703,9 @@
       <span class="revelar-word">Elevar</span>
       <p class="revelar-desc">Liberar o que pesava é só metade do caminho. A outra metade é elevar: instalar no lugar do bloqueio algo que te impulsione. Propósito. Clareza. Confiança. Nesta etapa sua mente recebe a programação que você escolheu para sua vida, ancorada fundo, onde nenhum estresse do dia a dia consegue apagar.</p>
     </div>
+  </div>
+
+  <div class="revelar-grid revelar-row-2">
     <div class="revelar-step">
       <span class="revelar-letter">L</span>
       <span class="revelar-word">Libertar</span>
