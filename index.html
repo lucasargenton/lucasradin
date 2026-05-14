@@ -923,19 +923,16 @@ nav { padding: 16px 24px; }
 
 .revelar-grid {
   grid-template-columns: 1fr;
+  gap: 8px;
 }
 .revelar-step {
-  padding: 28px 24px;
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  grid-template-rows: auto auto;
-  align-items: center;
-  gap: 0 20px;
-  text-align: left;
+  display: block;
+  padding: 36px 32px;
+  text-align: center;
 }
-.revelar-letter { font-size: 72px; grid-row: 1 / 3; margin-bottom: 0; }
-.revelar-word { font-size: 13px; margin-bottom: 6px; }
-.revelar-desc { font-size: 15px; line-height: 1.7; }
+.revelar-letter { font-size: 72px; margin-bottom: 12px; }
+.revelar-word { font-size: 12px; margin-bottom: 10px; }
+.revelar-desc { font-size: 15px; line-height: 1.7; max-width: 320px; margin: 0 auto; }
 
 .portal-inner { grid-template-columns: 1fr; gap: 40px; }
 .portal-text h2 { font-size: clamp(28px, 7vw, 40px); }
