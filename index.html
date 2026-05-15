@@ -355,6 +355,24 @@
   .portal-feature h4 { font-size: 14px; font-weight: 500; color: var(--pearl); margin-bottom: 4px; letter-spacing: 0.5px; }
   .portal-feature p { font-size: 13px; color: var(--muted); line-height: 1.7; }
 
+  @media (max-width: 768px) {
+    .portal-inner { grid-template-columns: 1fr; gap: 40px; }
+    .portal-features { gap: 40px; }
+    .portal-feature {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .portal-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 26px;
+    }
+    .portal-feature h4 { font-size: 18px; margin-bottom: 8px; }
+    .portal-feature p { font-size: 16px; line-height: 1.8; }
+  }
+
+
   .audience-section { padding: 120px 80px; position: relative; z-index: 2; }
 
   .audience-grid {
