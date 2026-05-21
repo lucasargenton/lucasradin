@@ -999,6 +999,17 @@
     <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378662/laroye_exu_cizgyc.png" alt="Laroye Exu">
   </div>
 </footer>
-
+<script>
+  // Rastrear cliques nos botões de WhatsApp
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var label = this.textContent.trim();
+      gtag('event', 'click_whatsapp', {
+        'event_category': 'botao',
+        'event_label': label
+      });
+    });
+  });
+</script>
 </body>
 </html>
