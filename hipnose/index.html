@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N0NMQK33HR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-N0NMQK33HR');
+</script>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>O Reencontro: Experiência de Hipnose | Lucas Radin</title>
@@ -303,7 +313,7 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
   </section>
 
 <div style="text-align: center; padding: 0 40px 80px;">
-  <a href="#cta" class="btn-cta">Quero viver isso! →</a>
+  <a href="#cta" class="btn-cta" onclick="gtag('event', 'click_compra', {'event_category': 'workshop', 'event_label': 'quero_viver_isso'})">Quero viver isso! →</a>
 </div>
   
   <div class="divider"></div>
@@ -325,7 +335,7 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
         <div class="cta-price"><span>12x de</span> R$10<span>,03</span></div>
         <div class="cta-price-note">ou <strong style="color: var(--gold);">R$ 97 à vista</strong> · Acesso imediato ao grupo exclusivo</div>
 </div>
-        <a href="https://pay.hotmart.com/S106049591G" class="btn-cta">Quero participar →</a>
+        <a href="https://pay.hotmart.com/S106049591G" class="btn-cta" onclick="gtag('event', 'click_compra', {'event_category': 'workshop', 'event_label': 'cta_final'})">Quero participar →</a>
       </div>
       <a href="https://wa.me/5547984263837?text=Quero%20suporte%20para%20a%20experi%C3%AAncia%20de%20hipnose" class="whatsapp-btn" target="_blank">
         💬 Falar com suporte pelo WhatsApp
