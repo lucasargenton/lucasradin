@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bem-vindo: O Reencontro | Lucas Radin</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<!-- Google Analytics -->
+  <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0NMQK33HR"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -20,19 +12,33 @@
 
 <!-- Evento de conversão — dispara após o Analytics carregar -->
 <script>
+  function dispararPurchase() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'purchase', {
+        'transaction_id': Date.now().toString(),
+        'value': 97,
+        'currency': 'BRL',
+        'items': [{
+          'item_name': 'Workshop O Reencontro',
+          'price': 97,
+          'quantity': 1
+        }]
+      });
+    } else {
+      setTimeout(dispararPurchase, 500);
+    }
+  }
   window.addEventListener('load', function() {
-    gtag('event', 'purchase', {
-      'transaction_id': Date.now().toString(),
-      'value': 97,
-      'currency': 'BRL',
-      'items': [{
-        'item_name': 'Workshop O Reencontro',
-        'price': 97,
-        'quantity': 1
-      }]
-    });
+    setTimeout(dispararPurchase, 1000);
   });
 </script>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindo: O Reencontro | Lucas Radin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
