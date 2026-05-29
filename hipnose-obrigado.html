@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bem-vindo: O Reencontro | Lucas Radin</title>
@@ -8,16 +9,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0NMQK33HR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N0NMQK33HR');
-    gtag('event', 'purchase', {'event_category': 'workshop', 'event_label': 'reencontro', 'value': 97});
-  </script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N0NMQK33HR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-N0NMQK33HR');
+</script>
 
+<!-- Evento de conversão — dispara após o Analytics carregar -->
+<script>
+  window.addEventListener('load', function() {
+    gtag('event', 'purchase', {
+      'transaction_id': Date.now().toString(),
+      'value': 97,
+      'currency': 'BRL',
+      'items': [{
+        'item_name': 'Workshop O Reencontro',
+        'price': 97,
+        'quantity': 1
+      }]
+    });
+  });
+</script>
+  
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
