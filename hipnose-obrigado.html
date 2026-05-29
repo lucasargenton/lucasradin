@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindo: O Reencontro | Lucas Radin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0NMQK33HR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N0NMQK33HR');
+    gtag('event', 'purchase', {'event_category': 'workshop', 'event_label': 'reencontro', 'value': 97});
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0d0118; --purple: #9b7fd4; --purple-deep: #5B3FA0;
+      --gold: #c9a84c; --gold-light: #e8c96a; --pearl: #f5f0ff;
+      --white: #ffffff; --gray: #b0a0c8;
+    }
+    body {
+      background-color: var(--dark);
+      color: var(--pearl);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, #2a0a4a 0%, #0d0118 65%);
+      z-index: 0;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: float 8s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: #5B3FA0; top: -100px; right: -100px; }
+    .orb-2 { width: 300px; height: 300px; background: #c9a84c; bottom: -80px; left: 5%; animation-delay: 3s; opacity: 0.12; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .check {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      font-size: 28px;
+      box-shadow: 0 0 40px rgba(201,168,76,0.4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 40px rgba(201,168,76,0.4); }
+      50% { box-shadow: 0 0 70px rgba(201,168,76,0.7); }
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--purple);
+      margin-bottom: 40px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 40px;
+    }
+
+    .message {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .message strong {
+      color: var(--pearl);
+      font-weight: 400;
+    }
+
+    .box {
+      background: linear-gradient(135deg, rgba(91,63,160,0.15), rgba(13,1,24,0.8));
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 40px 36px;
+      margin: 40px 0;
+      position: relative;
+    }
+
+    .box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .box-title {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .box-text {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 18px 40px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(37,211,102,0.35);
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    .anchor-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--pearl);
+      margin: 40px 0 8px;
+      line-height: 1.5;
+    }
+
+    .anchor-gesture {
+      font-size: 40px;
+      margin: 16px 0;
+    }
+
+    .anchor-desc {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .footer-text {
+      margin-top: 48px;
+      font-size: 13px;
+      color: rgba(176,160,200,0.5);
+    }
+
+    .footer-text a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .box { padding: 28px 20px; }
+      .message { font-size: 17px; }
+      .box-text { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="card">
+    <div class="check">✓</div>
+
+    <div class="eyebrow">Pagamento confirmado</div>
+    <h1 class="title">Você está dentro.</h1>
+    <p class="subtitle">O Reencontro: 18 de junho · 19h</p>
+
+    <div class="divider"></div>
+
+    <p class="message">Obrigado por confiar nesse espaço.<br><br>
+<strong>O próximo passo é entrar no grupo exclusivo do workshop</strong> porque é lá que você vai receber lembretes e tudo que precisar antes do dia 18.<br><br>
+Você também pode acessar a transmissão diretamente pela Hotmart, seguindo o link que chegou no seu e-mail. Mas não se preocupa, vou compartilhar tudo novamente lá no grupo do WhatsApp antes do evento.</p>
+
+    <div class="box">
+      <div class="box-title">Próximo passo</div>
+      <p class="box-text">Clica no botão abaixo para entrar no grupo do WhatsApp. É rápido e é de lá que vem tudo.</p>
+      <a href="https://chat.whatsapp.com/Fv0Y2SCNhdP3oq3wJgsFXY?mode=gi_t" class="btn-whatsapp" target="_blank">
+        💬 Entrar no grupo agora
+      </a>
+      <p class="note">Salva esse link. Ele é o seu acesso ao workshop.</p>
+    </div>
+
+    <p class="anchor-text">"Esse estado que você vai sentir no dia 18<br>sempre esteve em você."</p>
+    <div class="anchor-gesture">🤍</div>
+    <p class="anchor-desc">Lembre: a mão direita no peito.<br>Você vai entender no dia.</p>
+
+    <p class="footer-text">
+      Dúvidas? <a href="https://wa.me/5547984263837?text=Quero%20suporte%20para%20a%20experi%C3%AAncia%20de%20hipnose">Fale com nossa equipe</a> pelo WhatsApp.<br>
+      <a href="https://lucasradin.com.br">lucasradin.com.br</a>
+    </p>
+  </div>
+
+</body>
+</html>
