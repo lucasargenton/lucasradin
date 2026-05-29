@@ -318,7 +318,7 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
   
   <div class="divider"></div>
 
-  <section class="cta-section" id="cta">
+<section class="cta-section" id="cta">
     <div class="cta-inner">
       <div class="section-eyebrow" style="justify-content:center;margin-bottom:20px;">Garanta sua vaga</div>
       <h2 class="cta-title">O Reencontro</h2>
@@ -330,11 +330,48 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
           <div class="cta-detail"><div class="cta-detail-label">Formato</div><div class="cta-detail-value">Ao vivo — Hotmart</div></div>
           <div class="cta-detail"><div class="cta-detail-label">Gravação</div><div class="cta-detail-value">Disponível por 7 dias</div></div>
         </div>
-        <div class="cta-price-wrap">
-        <div class="cta-price-label">Investimento</div>
-        <div class="cta-price"><span>12x de</span> R$10<span>,03</span></div>
-        <div class="cta-price-note">ou <strong style="color: var(--gold);">R$ 97 à vista</strong> · Acesso imediato ao grupo exclusivo</div>
-</div>
+
+        <!-- CONTADOR -->
+        <div id="cupom-ativo" style="margin: 28px 0 0;">
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Cupom REVELAR expira em</div>
+          <div style="display:flex; justify-content:center; gap:16px; margin-bottom:24px;">
+            <div style="text-align:center;">
+              <div id="count-dias" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--white); line-height:1;">00</div>
+              <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:4px;">dias</div>
+            </div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gold); line-height:1;">:</div>
+            <div style="text-align:center;">
+              <div id="count-horas" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--white); line-height:1;">00</div>
+              <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:4px;">horas</div>
+            </div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gold); line-height:1;">:</div>
+            <div style="text-align:center;">
+              <div id="count-min" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--white); line-height:1;">00</div>
+              <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:4px;">min</div>
+            </div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gold); line-height:1;">:</div>
+            <div style="text-align:center;">
+              <div id="count-seg" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--white); line-height:1;">00</div>
+              <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:4px;">seg</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PREÇO COM CUPOM ATIVO -->
+        <div id="preco-cupom" class="cta-price-wrap">
+          <div class="cta-price-label">Investimento com cupom <strong style="color:var(--gold);">REVELAR</strong></div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gray); text-decoration:line-through; margin-bottom:4px;">R$ 137</div>
+          <div class="cta-price"><span>R$</span> 97</div>
+          <div class="cta-price-note">Use o cupom <strong style="color:var(--gold);">REVELAR</strong> no checkout · Válido até 11 de junho</div>
+        </div>
+
+        <!-- PREÇO SEM CUPOM (aparece depois do dia 11) -->
+        <div id="preco-cheio" class="cta-price-wrap" style="display:none;">
+          <div class="cta-price-label">Investimento</div>
+          <div class="cta-price"><span>R$</span> 137</div>
+          <div class="cta-price-note">Acesso imediato ao grupo exclusivo</div>
+        </div>
+
         <a href="https://pay.hotmart.com/S106049591G" class="btn-cta" onclick="gtag('event', 'click_compra', {'event_category': 'workshop', 'event_label': 'cta_final'})">Quero participar →</a>
       </div>
       <a href="https://wa.me/5547984263837?text=Quero%20suporte%20para%20a%20experi%C3%AAncia%20de%20hipnose" class="whatsapp-btn" target="_blank">
@@ -342,6 +379,37 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
       </a>
     </div>
   </section>
+
+  <script>
+    // Data limite do cupom: 11 de junho de 2026 às 23:59:59 horário de Brasília
+    const expiracao = new Date('2026-06-11T23:59:59-03:00');
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = expiracao - agora;
+
+      if (diff <= 0) {
+        // Cupom expirado — esconde contador e preço com cupom, mostra preço cheio
+        document.getElementById('cupom-ativo').style.display = 'none';
+        document.getElementById('preco-cupom').style.display = 'none';
+        document.getElementById('preco-cheio').style.display = 'block';
+        return;
+      }
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seg = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('count-dias').textContent = String(dias).padStart(2, '0');
+      document.getElementById('count-horas').textContent = String(horas).padStart(2, '0');
+      document.getElementById('count-min').textContent = String(min).padStart(2, '0');
+      document.getElementById('count-seg').textContent = String(seg).padStart(2, '0');
+    }
+
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
+  </script>
 
   <footer>
     <div class="footer-name">Lucas Radin</div>
