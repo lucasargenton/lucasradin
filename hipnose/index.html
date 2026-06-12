@@ -189,15 +189,12 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
         </div>
         <div class="event-item">
           <span class="event-label">Investimento</span>
-          <span class="event-value">
-            <span style="font-size:13px; text-decoration:line-through; opacity:0.45; font-family:'Outfit',sans-serif; display:block; line-height:1;">R$137</span>
-            R$ 97
-          </span>
+          <span class="event-value">R$ 137</span>
         </div>
       </div>
       <div style="margin-top:-20px; margin-bottom:28px;">
         <span style="font-size:12px; color:var(--gold); background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); padding:5px 14px; border-radius:20px; letter-spacing:0.04em; display:inline-block;">
-          🎟 Desconto já aplicado · PIX e parcelamento disponíveis
+          🎟 PIX e parcelamento disponíveis
         </span>
       </div>
       <div class="cta-group">
@@ -338,9 +335,9 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
           <div class="cta-detail"><div class="cta-detail-label">Gravação</div><div class="cta-detail-value">Disponível por 7 dias</div></div>
         </div>
 
-        <!-- CONTADOR -->
-        <div id="cupom-ativo" style="margin: 28px 0 0;">
-          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Oferta especial expira em</div>
+        <!-- CONTADOR PARA O EVENTO -->
+        <div style="margin: 28px 0 0;">
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">A experiência começa em</div>
           <div style="display:flex; justify-content:center; gap:16px; margin-bottom:24px;">
             <div style="text-align:center;">
               <div id="count-dias" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--white); line-height:1;">00</div>
@@ -364,23 +361,14 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
           </div>
         </div>
 
-        <!-- PREÇO COM DESCONTO ATIVO -->
-        <div id="preco-cupom" class="cta-price-wrap">
-          <div class="cta-price-label">Investimento</div>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gray); text-decoration:line-through; margin-bottom:4px;">R$ 137</div>
-          <div class="cta-price"><span>R$</span> 97</div>
-          <div class="cta-price-note">PIX ou parcelado em até 12x · Desconto já aplicado no link</div>
-        </div>
-
-        <!-- PREÇO SEM DESCONTO (aparece depois do dia 11) -->
-        <div id="preco-cheio" class="cta-price-wrap" style="display:none;">
+        <!-- PREÇO -->
+        <div class="cta-price-wrap">
           <div class="cta-price-label">Investimento</div>
           <div class="cta-price"><span>R$</span> 137</div>
           <div class="cta-price-note">PIX ou parcelado em até 12x</div>
         </div>
 
-        <a href="https://wa.me/5547984263837?text=Ol%C3%A1!%20Quero%20participar%20do%20workshop%20de%20hipnose%20com%20Lucas.%20Qual%20o%20link%20para%20fazer%20o%20pagamento%3F
-" class="btn-cta" target="_blank" onclick="gtag('event', 'click_compra', {'event_category': 'workshop', 'event_label': 'cta_final'})">Quero participar →</a>
+        <a href="https://wa.me/5547984263837?text=Ol%C3%A1!%20Quero%20participar%20do%20workshop%20de%20hipnose%20com%20Lucas.%20Qual%20o%20link%20para%20fazer%20o%20pagamento%3F" class="btn-cta" target="_blank" onclick="gtag('event', 'click_compra', {'event_category': 'workshop', 'event_label': 'cta_final'})">Quero participar →</a>
       </div>
       <a href="https://wa.me/5547984263837?text=Quero%20suporte%20para%20a%20experi%C3%AAncia%20de%20hipnose" class="whatsapp-btn" target="_blank">
         💬 Falar com suporte pelo WhatsApp
@@ -389,16 +377,18 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
   </section>
 
   <script>
-    const expiracao = new Date('2026-06-11T23:59:59-03:00');
+    // Data do evento: 18 de junho de 2026 às 19h (Brasília)
+    const dataEvento = new Date('2026-06-18T19:00:00-03:00');
 
     function atualizarContador() {
       const agora = new Date();
-      const diff = expiracao - agora;
+      const diff = dataEvento - agora;
 
       if (diff <= 0) {
-        document.getElementById('cupom-ativo').style.display = 'none';
-        document.getElementById('preco-cupom').style.display = 'none';
-        document.getElementById('preco-cheio').style.display = 'block';
+        document.getElementById('count-dias').textContent = '00';
+        document.getElementById('count-horas').textContent = '00';
+        document.getElementById('count-min').textContent = '00';
+        document.getElementById('count-seg').textContent = '00';
         return;
       }
 
