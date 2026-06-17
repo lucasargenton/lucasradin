@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0NMQK33HR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N0NMQK33HR');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>O Reencontro — Ao Vivo | Lucas Radin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:        #0d0118;
+      --dark2:       #120220;
+      --purple:      #9b7fd4;
+      --purple-deep: #5B3FA0;
+      --gold:        #c9a84c;
+      --gold-light:  #e8c96a;
+      --pearl:       #f5f0ff;
+      --white:       #ffffff;
+      --gray:        #b0a0c8;
+      --border:      rgba(155,127,212,0.18);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--dark);
+      color: var(--pearl);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── TOPO ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(13,1,24,0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e53e3e;
+      animation: pulse-dot 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* ── LAYOUT PRINCIPAL ── */
+    .stage {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      height: calc(100vh - 57px);
+    }
+
+    /* ── VÍDEO ── */
+    .video-col {
+      display: flex;
+      flex-direction: column;
+      background: #000;
+      position: relative;
+    }
+
+    .video-wrap {
+      flex: 1;
+      position: relative;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* rodapé do vídeo */
+    .video-footer {
+      padding: 18px 24px;
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .video-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--white);
+    }
+
+    .video-title em {
+      font-style: italic;
+      color: var(--purple);
+    }
+
+    .btn-revelar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #1a0f00;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+      white-space: nowrap;
+    }
+
+    .btn-revelar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(201,168,76,0.4);
+    }
+
+    /* ── CHAT ── */
+    .chat-col {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border);
+      background: var(--dark2);
+    }
+
+    .chat-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-wrap {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .chat-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      filter: invert(1) hue-rotate(180deg);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .stage {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: auto;
+        min-height: calc(100vh - 53px);
+      }
+
+      .video-col {
+        height: auto;
+      }
+
+      .video-wrap {
+        flex: none;
+        aspect-ratio: 16/9;
+        position: relative;
+        height: auto;
+      }
+
+      .video-wrap iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .chat-col {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        height: 480px;
+      }
+
+      .video-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .btn-revelar {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">O Reencontro <span>· Ao Vivo</span></div>
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      Ao vivo agora
+    </div>
+  </header>
+
+  <div class="stage">
+
+    <!-- VÍDEO -->
+    <div class="video-col">
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/VUTrG-PAFaA?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=0&fs=1&color=white"
+          allow="autoplay; encrypted-media; fullscreen"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="video-footer">
+        <div class="video-title">O Reencontro <em>— Experiência de Hipnose</em></div>
+        <a
+          href="https://lucasradin.com.br"
+          target="_blank"
+          class="btn-revelar"
+          onclick="gtag('event', 'click_revelar', {'event_category': 'assistir', 'event_label': 'footer_btn'})">
+          ✦ Conhecer o Método REVELAR
+        </a>
+      </div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="chat-col">
+      <div class="chat-header">
+        💬 Chat ao vivo
+      </div>
+      <div class="chat-wrap">
+        <iframe
+          src="https://www.youtube.com/live_chat?v=VUTrG-PAFaA&embed_domain=lucasradin.com.br"
+          allow="autoplay; encrypted-media">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
