@@ -69,8 +69,33 @@
       color: var(--gold);
     }
 
-    .live-badge {
+    /* Badge: countdown */
+    .countdown-badge {
       display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .countdown-badge .label {
+      color: var(--gray);
+    }
+
+    .countdown-badge .time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--pearl);
+      letter-spacing: 0.08em;
+    }
+
+    /* Badge: ao vivo (escondido até zerar) */
+    .live-badge {
+      display: none;
       align-items: center;
       gap: 7px;
       font-size: 11px;
@@ -122,7 +147,6 @@
       display: block;
     }
 
-    /* rodapé do vídeo */
     .video-footer {
       padding: 18px 24px;
       background: var(--dark2);
@@ -212,9 +236,7 @@
         min-height: calc(100vh - 53px);
       }
 
-      .video-col {
-        height: auto;
-      }
+      .video-col { height: auto; }
 
       .video-wrap {
         flex: none;
@@ -246,14 +268,24 @@
         width: 100%;
         justify-content: center;
       }
+
+      .countdown-badge .time { font-size: 15px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">O Reencontro <span>· Ao Vivo</span></div>
-    <div class="live-badge">
+    <div class="logo">O Reencontro <span>· Lucas Radin</span></div>
+
+    <!-- Contador (visível antes da live) -->
+    <div class="countdown-badge" id="countdown-badge">
+      <span class="label">Ao vivo em</span>
+      <span class="time" id="countdown-time">--:--:--</span>
+    </div>
+
+    <!-- Ao vivo (aparece quando zera) -->
+    <div class="live-badge" id="live-badge">
       <div class="live-dot"></div>
       Ao vivo agora
     </div>
@@ -297,6 +329,45 @@
     </div>
 
   </div>
+
+  <script>
+    // Data do evento: 18 de junho de 2026 às 19h (Brasília)
+    const dataEvento = new Date('2026-06-18T19:00:00-03:00');
+
+    const countdownBadge = document.getElementById('countdown-badge');
+    const liveBadge      = document.getElementById('live-badge');
+    const countdownTime  = document.getElementById('countdown-time');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function atualizar() {
+      const diff = dataEvento - new Date();
+
+      if (diff <= 0) {
+        // Zerorou → mostra "Ao vivo"
+        countdownBadge.style.display = 'none';
+        liveBadge.style.display = 'flex';
+        return;
+      }
+
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      // Se faltar mais de 1 dia, mostra dias também
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hRestante = h % 24;
+
+      if (dias > 0) {
+        countdownTime.textContent = `${dias}d ${pad(hRestante)}h ${pad(m)}m`;
+      } else {
+        countdownTime.textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+      }
+    }
+
+    atualizar();
+    setInterval(atualizar, 1000);
+  </script>
 
 </body>
 </html>
