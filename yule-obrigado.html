@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yule · Materiais para o Ritual</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --fundo: #2C1F0E;
+    --madeira: #3D2B12;
+    --vermelho: #A32020;
+    --vermelho-vivo: #C0392B;
+    --dourado: #D4A820;
+    --dourado-claro: #F5E070;
+    --verde-claro: #5AAF50;
+    --branco: #FDF8F0;
+    --branco-suave: #EDE0C8;
+    --cinza: #9A8A78;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--fundo);
+    color: var(--branco);
+    font-family: 'EB Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-size: 18px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 8% 12%, rgba(212,168,32,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(253,248,240,0.15) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 48% 8%, rgba(212,168,32,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 55%, rgba(253,248,240,0.12) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88% 20%, rgba(212,168,32,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 50% 35%, rgba(212,168,32,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 80%, rgba(253,248,240,0.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 75%, rgba(212,168,32,0.2) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 350px;
+    background: radial-gradient(ellipse at center top, rgba(163,32,32,0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .circle-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 520px;
+    height: 520px;
+    border: 0.5px solid rgba(212,168,32,0.05);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 0 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 3rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.1s;
+  }
+
+  .badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    border: 0.5px solid rgba(212,168,32,0.4);
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 1.5rem;
+    background: rgba(212,168,32,0.08);
+  }
+
+  .hero-simbolo {
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
+    filter: drop-shadow(0 0 10px rgba(212,168,32,0.35));
+  }
+
+  .hero-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    font-weight: 600;
+    color: var(--dourado);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+    text-shadow: 0 0 30px rgba(212,168,32,0.25);
+  }
+
+  .hero-sub {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+    color: var(--branco-suave);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-frase {
+    font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+    font-style: italic;
+    color: var(--branco-suave);
+    line-height: 1.75;
+    max-width: 400px;
+    opacity: 0.85;
+  }
+
+  /* ── DIVISOR ── */
+  .divisor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 340px;
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.3s;
+  }
+
+  .divisor::before, .divisor::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(90deg, transparent, rgba(212,168,32,0.35), transparent);
+  }
+
+  .divisor span {
+    color: var(--dourado);
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+
+  /* ── AVISO WHATSAPP ── */
+  .wpp-card {
+    width: 100%;
+    max-width: 460px;
+    border: 0.5px solid rgba(90,175,80,0.35);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    background: rgba(26,48,24,0.5);
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.4s;
+  }
+
+  .wpp-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 0.6rem;
+  }
+
+  .wpp-texto {
+    font-size: clamp(1rem, 3.2vw, 1.15rem);
+    color: var(--branco-suave);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .wpp-texto strong {
+    color: var(--branco);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .btn-wpp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #25D366;
+    color: #0a1f0a;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(37,211,102,0.2);
+  }
+
+  .btn-wpp:hover {
+    background: #20c55e;
+    box-shadow: 0 0 30px rgba(37,211,102,0.35);
+    transform: translateY(-2px);
+  }
+
+  .btn-wpp svg {
+    width: 18px;
+    height: 18px;
+    fill: #0a1f0a;
+    flex-shrink: 0;
+  }
+
+  /* ── MATERIAIS ── */
+  .materiais-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-weight: 500;
+    color: var(--dourado);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  .materiais-aviso {
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    font-style: italic;
+    color: var(--cinza);
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.6s;
+  }
+
+  .materiais-lista {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.7s;
+  }
+
+  .material {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    background: rgba(61,43,18,0.5);
+    border: 0.5px solid rgba(212,168,32,0.15);
+    border-radius: 10px;
+    padding: 1rem 1.3rem;
+    backdrop-filter: blur(4px);
+    transition: border-color 0.3s ease;
+  }
+
+  .material:hover {
+    border-color: rgba(212,168,32,0.35);
+  }
+
+  .material-emoji {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    width: 2.2rem;
+    text-align: center;
+  }
+
+  .material-nome {
+    font-size: clamp(1rem, 3.2vw, 1.2rem);
+    color: var(--branco);
+    line-height: 1.4;
+  }
+
+  /* ── NOTA FINAL ── */
+  .nota {
+    width: 100%;
+    max-width: 420px;
+    border-top: 0.5px solid rgba(212,168,32,0.15);
+    padding-top: 1.8rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.9s;
+  }
+
+  .nota-texto {
+    font-size: clamp(1rem, 3.2vw, 1.15rem);
+    font-style: italic;
+    color: var(--branco-suave);
+    line-height: 1.8;
+    opacity: 0.75;
+  }
+
+  /* ── RODAPÉ ── */
+  .rodape {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    color: rgba(253,248,240,0.22);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1s;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    .container { padding: 0 1.1rem; }
+    .hero { padding: 2.5rem 0 1.5rem; }
+    .wpp-card { padding: 1.1rem 1.1rem; }
+    .material { padding: 0.85rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="circle-bg"></div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="badge">✓ Compra aprovada</span>
+    <div class="hero-simbolo">🔥</div>
+    <h1 class="hero-titulo">Yule</h1>
+    <p class="hero-sub">Materiais para o ritual</p>
+    <p class="hero-frase">
+      Sua inscrição está confirmada.<br>
+      Prepare seu espaço com carinho... cada item é um convite para aprofundar sua presença na celebração.
+    </p>
+  </div>
+
+  <div class="divisor"><span>✦</span></div>
+
+  <!-- AVISO WHATSAPP -->
+  <div class="wpp-card">
+    <p class="wpp-titulo">📲 Importante! Entre no grupo</p>
+    <p class="wpp-texto">
+      O link para acessar a sala do <strong>Google Meet</strong> onde a celebração acontecerá será enviado pelo nosso grupo do WhatsApp. Lá também enviaremos lembretes e reenviamos estes materiais antes da data.
+    </p>
+    <a href="https://chat.whatsapp.com/CMuQkWkra8q8POKY2s1S9D?mode=gi_t" class="btn-wpp" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Entrar no grupo do WhatsApp
+    </a>
+  </div>
+
+  <!-- MATERIAIS -->
+  <p class="materiais-titulo">O que preparar</p>
+  <p class="materiais-aviso">Faça um esforço para reunir o que puder, pois cada item enriquece a sua experiência no ritual. Mas se não conseguir algum, não tem problema. O mais importante é a sua presença.</p>
+
+  <div class="materiais-lista">
+    <div class="material">
+      <span class="material-emoji">🍃</span>
+      <span class="material-nome">3 folhas de louro</span>
+    </div>
+    <div class="material">
+      <span class="material-emoji">🕯️</span>
+      <span class="material-nome">1 vela branca</span>
+    </div>
+    <div class="material">
+      <span class="material-emoji">🧁</span>
+      <span class="material-nome">1 pedaço de bolo, cupcake ou uma fruta que você goste</span>
+    </div>
+    <div class="material">
+      <span class="material-emoji">💧</span>
+      <span class="material-nome">1 vasilha com água</span>
+    </div>
+    <div class="material">
+      <span class="material-emoji">🔮</span>
+      <span class="material-nome">1 cristal</span>
+    </div>
+    <div class="material">
+      <span class="material-emoji">🌱</span>
+      <span class="material-nome">Sementes de flores da estação ou uma semente que dê para plantar</span>
+    </div>
+    <div class="material">
+      <span class="material-emoji">🪴</span>
+      <span class="material-nome">Um vaso com terra fértil</span>
+    </div>
+    <div class="material">
+      <span class="material-emoji">📝</span>
+      <span class="material-nome">Um papel em branco e caneta ou lápis</span>
+    </div>
+  </div>
+
+  <!-- NOTA FINAL -->
+  <div class="nota">
+    <p class="nota-texto">
+      Prepare um cantinho tranquilo, com pouca luz se puder, e chegue alguns minutos antes das 19h30. A celebração começa pontualmente e dura aproximadamente 1h30.
+    </p>
+  </div>
+
+  <p class="rodape">Lucas Radin · Ella Del Rey · Yule 2026</p>
+
+</div>
+
+</body>
+</html>
