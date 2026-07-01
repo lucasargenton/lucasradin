@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yule · Solstício de Inverno: Celebração ao Vivo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --fundo: #0E0B08;
+    --madeira: #1C1208;
+    --verde-escuro: #0D1F0F;
+    --vermelho: #8B1A1A;
+    --vermelho-vivo: #C0392B;
+    --dourado: #C8A84B;
+    --dourado-claro: #F0D98A;
+    --verde: #2D5A27;
+    --verde-claro: #4A8C42;
+    --branco: #F5F0E8;
+    --branco-suave: #D9D0C0;
+    --marrom: #5C3D1E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--fundo);
+    color: var(--branco);
+    font-family: 'EB Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-size: 18px;
+  }
+
+  /* Textura de fundo */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 8% 12%, rgba(200,168,75,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(245,240,232,0.2) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 8%, rgba(200,168,75,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 58% 72%, rgba(245,240,232,0.15) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 75% 22%, rgba(200,168,75,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 58%, rgba(245,240,232,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 82%, rgba(200,168,75,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 12% 88%, rgba(245,240,232,0.15) 0%, transparent 100%),
+      radial-gradient(2px 2px at 50% 32%, rgba(200,168,75,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 62%, rgba(245,240,232,0.2) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Glow de fogo no topo */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 400px;
+    background: radial-gradient(ellipse at center top, rgba(139,26,26,0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 0 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 3.5rem 0 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.1s;
+  }
+
+  .badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    border: 0.5px solid rgba(74,140,66,0.4);
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-simbolo {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+    filter: drop-shadow(0 0 12px rgba(200,168,75,0.4));
+  }
+
+  .hero-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.6rem, 9vw, 3.8rem);
+    font-weight: 600;
+    color: var(--dourado);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+    text-shadow: 0 0 40px rgba(200,168,75,0.3);
+  }
+
+  .hero-sub {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.85rem, 2.8vw, 1rem);
+    font-weight: 400;
+    color: var(--branco-suave);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 2rem;
+  }
+
+  .hero-frase {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-style: italic;
+    color: var(--branco);
+    line-height: 1.7;
+    max-width: 400px;
+    opacity: 0.9;
+  }
+
+  /* ── DIVISOR ── */
+  .divisor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 340px;
+    margin: 2.5rem 0;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.4s;
+  }
+
+  .divisor::before, .divisor::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(90deg, transparent, rgba(200,168,75,0.35), transparent);
+  }
+
+  .divisor span {
+    color: var(--dourado);
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+
+  /* ── O QUE É ── */
+  .sobre {
+    width: 100%;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  .sobre-texto {
+    font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+    line-height: 1.85;
+    color: var(--branco-suave);
+    font-style: italic;
+  }
+
+  /* ── MOTIVOS ── */
+  .motivos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.65s;
+  }
+
+  .motivo {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: left;
+    background: rgba(28,18,8,0.6);
+    border: 0.5px solid rgba(200,168,75,0.12);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .motivo-icone {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .motivo-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--dourado);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+  }
+
+  .motivo-desc {
+    font-size: 1rem;
+    color: var(--branco-suave);
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  /* ── DATA / HORA ── */
+  .evento-card {
+    width: 100%;
+    max-width: 380px;
+    border: 0.5px solid rgba(139,26,26,0.4);
+    border-radius: 14px;
+    padding: 1.5rem 1.8rem;
+    background: rgba(28,18,8,0.7);
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.8s;
+  }
+
+  .evento-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 0.8rem;
+  }
+
+  .evento-data {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    color: var(--dourado);
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+
+  .evento-hora {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--branco-suave);
+    letter-spacing: 0.1em;
+    opacity: 0.75;
+    margin-bottom: 1.2rem;
+  }
+
+  .evento-formato {
+    font-size: 0.9rem;
+    color: var(--branco-suave);
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  /* ── PREÇO ── */
+  .preco-wrap {
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.9s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .preco-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--branco-suave);
+    opacity: 0.5;
+  }
+
+  .preco-valor {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.4rem, 8vw, 3.2rem);
+    font-weight: 600;
+    color: var(--branco);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .preco-valor span {
+    font-size: 55%;
+    vertical-align: super;
+    color: var(--dourado);
+    font-weight: 400;
+  }
+
+  .preco-desc {
+    font-size: 0.85rem;
+    color: var(--branco-suave);
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  /* ── BOTÃO ── */
+  .btn-wrap {
+    width: 100%;
+    max-width: 400px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1s;
+    margin-bottom: 1.2rem;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    background: var(--vermelho);
+    color: var(--branco);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 3.5vw, 1.15rem);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    padding: 1.1rem 2rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(139,26,26,0.35);
+    border: 0.5px solid rgba(192,57,43,0.5);
+  }
+
+  .btn:hover {
+    background: var(--vermelho-vivo);
+    box-shadow: 0 0 45px rgba(192,57,43,0.5);
+    transform: translateY(-2px);
+  }
+
+  .btn:active { transform: translateY(0); }
+
+  .btn-sub {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.35);
+    font-style: italic;
+    margin-top: 0.7rem;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.1s;
+  }
+
+  /* ── RODAPÉ ── */
+  .rodape {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2.5rem 0 2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.2s;
+  }
+
+  /* Círculos decorativos */
+  .circle-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 520px;
+    height: 520px;
+    border: 0.5px solid rgba(200,168,75,0.05);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    .container { padding: 0 1.2rem; }
+    .hero { padding: 2.5rem 0 2rem; }
+    .motivo { padding: 0.9rem 1rem; }
+    .evento-card { padding: 1.2rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="circle-bg"></div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="badge">☽ Sabbat · Solstício de Inverno</span>
+    <div class="hero-simbolo">🔥</div>
+    <h1 class="hero-titulo">Yule</h1>
+    <p class="hero-sub">Celebração ao vivo · Ritual online</p>
+    <p class="hero-frase">
+      No ponto mais escuro do ano, a luz renasce.<br>
+      Venha celebrar esse momento com a gente.
+    </p>
+  </div>
+
+  <div class="divisor"><span>✦</span></div>
+
+  <!-- SOBRE -->
+  <div class="sobre">
+    <p class="sobre-texto">
+      Yule marca o solstício de inverno, o instante em que a escuridão atinge seu ápice e o sol começa a retornar. É um momento de renovação, gratidão e reconexão com os ciclos sagrados da Terra.
+    </p>
+  </div>
+
+  <!-- MOTIVOS -->
+  <div class="motivos">
+    <div class="motivo">
+      <span class="motivo-icone">🌿</span>
+      <div>
+        <p class="motivo-titulo">Renovação da Luz</p>
+        <p class="motivo-desc">Mesmo nas épocas mais sombrias, a luz sempre retorna. Yule nos lembra disso com toda a sua força.</p>
+      </div>
+    </div>
+    <div class="motivo">
+      <span class="motivo-icone">🌍</span>
+      <div>
+        <p class="motivo-titulo">Conexão com a Natureza</p>
+        <p class="motivo-desc">Reconecte-se com os ciclos naturais da Terra e com a sabedoria que reside nos ritmos do mundo.</p>
+      </div>
+    </div>
+    <div class="motivo">
+      <span class="motivo-icone">🙏</span>
+      <div>
+        <p class="motivo-titulo">Gratidão e Renovação</p>
+        <p class="motivo-desc">Um ritual para honrar o que passou, soltar o que não serve mais e plantar intenções para o novo ciclo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATA -->
+  <div class="evento-card">
+    <p class="evento-label">Quando acontece</p>
+    <p class="evento-data">8 de julho de 2026</p>
+    <p class="evento-hora">às 19h30 · ao vivo online</p>
+    <p class="evento-formato">Duração aproximada de 1h30 · via transmissão ao vivo</p>
+  </div>
+
+  <!-- PREÇO -->
+  <div class="preco-wrap">
+    <p class="preco-label">Investimento</p>
+    <p class="preco-valor"><span>R$</span>57</p>
+    <p class="preco-desc">acesso à celebração ao vivo</p>
+  </div>
+
+  <!-- BOTÃO -->
+  <div class="btn-wrap">
+    <a href="#" class="btn">Quero celebrar o Yule</a>
+  </div>
+  <p class="btn-sub">Após a inscrição você receberá o link de acesso</p>
+
+  <p class="rodape">Lucas Radin · Ella Del Rey · A Roda do Ano</p>
+
+</div>
+
+</body>
+</html>
