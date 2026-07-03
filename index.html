@@ -122,6 +122,57 @@
   }
   .nav-cta:hover { background: var(--gold); color: var(--deep); }
 
+  /* ===== NOVO: botão flutuante de WhatsApp ===== */
+  .floating-whatsapp {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+    z-index: 200;
+    opacity: 0;
+    transform: translateY(16px) scale(0.85);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+  }
+
+  .floating-whatsapp.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .floating-whatsapp:hover {
+    box-shadow: 0 10px 36px rgba(201,168,76,0.55);
+    transform: translateY(-2px) scale(1.05);
+  }
+
+  .floating-whatsapp svg {
+    width: 28px;
+    height: 28px;
+    color: var(--deep);
+  }
+
+  @media (max-width: 768px) {
+    .floating-whatsapp {
+      width: 52px;
+      height: 52px;
+      bottom: 20px;
+      right: 20px;
+    }
+    .floating-whatsapp svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
   .hero {
     min-height: 100vh;
     display: grid;
@@ -280,7 +331,6 @@
     margin: 0 auto 80px;
   }
 
-  /* ===== ALTERADO: revelar-grid sem colunas fixas ===== */
   .revelar-grid {
     display: grid;
     gap: 2px;
@@ -288,13 +338,11 @@
     margin: 0 auto;
   }
 
-  /* ===== NOVO: linha 1 com 4 colunas (REVE) ===== */
   .revelar-row-1 {
     grid-template-columns: repeat(4, 1fr);
     margin-bottom: 2px;
   }
 
-  /* ===== NOVO: linha 2 com 3 colunas (LAR) ===== */
   .revelar-row-2 {
     grid-template-columns: repeat(3, 1fr);
     max-width: 825px;
@@ -329,7 +377,6 @@
     display: block;
   }
 
-  /* ===== ALTERADO: font-size de 11px para 13px ===== */
   .revelar-word {
     font-size: 13px;
     font-weight: 500;
@@ -340,7 +387,6 @@
     display: block;
   }
 
-  /* ===== ALTERADO: font-size de 12px para 14px, line-height de 1.6 para 1.75 ===== */
   .revelar-desc {
     font-size: 14px;
     color: var(--muted);
@@ -494,7 +540,7 @@
     width: 100%; aspect-ratio: 1; object-fit: cover;
     filter: grayscale(20%) sepia(10%);
     border: 1px solid rgba(201,168,76,0.15);
-    transition: all 0.4f;
+    transition: all 0.4s;
   }
 
   .about-imgs img:hover { filter: grayscale(0%) sepia(0%); border-color: rgba(201,168,76,0.4); }
@@ -671,7 +717,6 @@
     .conditions-section, .about-section, .testimonials-section,
     .pricing-section, .cta-section { padding: 80px 24px; }
 
-    /* ===== ALTERADO: mobile agora cobre row-1 e row-2 também ===== */
     .revelar-grid,
     .revelar-row-1,
     .revelar-row-2 {
@@ -706,8 +751,14 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">LUCAS RADIN</a>
-  <a href="#conditions-section" class="nav-cta" target="_blank">Saber mais</a>
+  <a href="#conditions-section" class="nav-cta">Saber mais</a>
 </nav>
+
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<a href="https://wa.me/5547984263837?text=Olá%20Lucas%2C%20quero%20saber%20mais%20sobre%20o%20Método%20REVELAR"
+   class="floating-whatsapp" id="floatingWhatsapp" target="_blank" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L0 24l6.347-1.499A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.663-.518-5.187-1.42l-.371-.22-3.868.913.978-3.773-.242-.389A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
 
 <!-- HERO -->
 <section class="hero">
@@ -719,8 +770,8 @@
     <p class="hero-desc">
       O Método REVELAR mergulha fundo no que te prende, nesta vida ou em outras, e liberta você de padrões que nenhuma terapia até hoje conseguiu alcançar.
     </p>
-    <a href="#conditions-section" class="btn-primary" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    <a href="#conditions-section" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L0 24l6.347-1.499A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.663-.518-5.187-1.42l-.371-.22-3.868.913.978-3.773-.242-.389A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
       Ver Mais
     </a>
   </div>
@@ -785,7 +836,7 @@
     <span class="condition-tag">E muito mais...</span>
   </div>
 </section>
-  
+
 <!-- MÉTODO REVELAR -->
 <section class="revelar-section">
   <p class="section-label">O método</p>
@@ -796,22 +847,22 @@
     <div class="revelar-step">
       <span class="revelar-letter">R</span>
       <span class="revelar-word">Resgatar</span>
-      <p class="revelar-desc">Todo sofrimento tem uma causa, que pode estar nesta ou em outras vidas. Toda ansiedade, todo bloqueio, toda sensação de estar preso... e aquele mesmo padrão que continua voltando, como se algo invisível te puxasse de volta ao mesmo lugar. Existe um momento exato onde isso começou. Aqui acessamos essa raiz, na maioria das vezes enterrada em memórias que a mente consciente nem lembra, e a revelamos com clareza.</p>
+      <p class="revelar-desc">Todo sofrimento tem uma origem, nesta vida ou em outra. A ansiedade, o bloqueio, o padrão que sempre volta... existe um momento exato onde isso começou. Aqui acessamos essa raiz, muitas vezes esquecida pela mente consciente, e a revelamos com clareza.</p>
     </div>
     <div class="revelar-step">
       <span class="revelar-letter">E</span>
       <span class="revelar-word">Educar</span>
-      <p class="revelar-desc">Encontrar a origem não basta, é preciso ressignificá-la. Sua mente aprendeu a reagir de um jeito... e repetiu esse aprendizado tantas vezes que virou automático. Nesta etapa ressignificamos essa programação na raiz: a mesma memória, a mesma experiência, mas agora vista com novos olhos. O que antes pesava, começa a fazer sentido.</p>
+      <p class="revelar-desc">Encontrar a origem não basta, é preciso ressignificá-la. Sua mente aprendeu a reagir de um jeito e repetiu isso até virar automático. Nesta etapa a mesma memória é vista com novos olhos. O que antes pesava, começa a fazer sentido.</p>
     </div>
     <div class="revelar-step">
       <span class="revelar-letter">V</span>
       <span class="revelar-word">Valorizar</span>
-      <p class="revelar-desc">Você aprendeu a ignorar certas partes de si para sobreviver. Mas o que foi ignorado não desaparece... ele grita através da ansiedade que aperta o peito sem motivo aparente, do bloqueio que trava quando você mais precisa agir, do vazio que aparece mesmo nos dias em que tudo "deveria" estar bem. Nesta etapa essas partes são vistas, ouvidas e integradas. Sem julgamento. Sem peso. Com o respeito que sempre mereceram.</p>
+      <p class="revelar-desc">Você aprendeu a ignorar partes de si para sobreviver. Mas o que foi ignorado não desaparece, ele aparece na ansiedade, no bloqueio, no vazio. Nesta etapa essas partes são vistas, ouvidas e integradas, com o respeito que sempre mereceram.</p>
     </div>
     <div class="revelar-step">
       <span class="revelar-letter">E</span>
       <span class="revelar-word">Elevar</span>
-      <p class="revelar-desc">Liberar o que pesava é só metade do caminho. A outra metade é elevar: instalar no lugar do bloqueio algo que te impulsione. Propósito. Clareza. Confiança. Nesta etapa sua mente recebe a programação que você escolheu para sua vida, ancorada fundo, onde nenhum estresse do dia a dia consegue apagar.</p>
+      <p class="revelar-desc">Liberar o que pesava é só metade do caminho. A outra metade é elevar: instalar propósito, clareza e confiança no lugar do bloqueio. Sua mente recebe a nova programação, ancorada onde o estresse do dia a dia não consegue apagar.</p>
     </div>
   </div>
 
@@ -819,18 +870,38 @@
     <div class="revelar-step">
       <span class="revelar-letter">L</span>
       <span class="revelar-word">Libertar</span>
-      <p class="revelar-desc">Você carregou isso por tempo demais. A ansiedade que aparecia sem avisar, o bloqueio que travava tudo, o dinheiro que nunca ficava por mais que você trabalhasse, os relacionamentos que sempre terminavam do mesmo jeito... como se você atraísse os mesmos tipos de pessoas e os mesmos conflitos, o padrão que voltava mesmo quando você jurava que tinha superado... Nesta etapa você se despede com a leveza de quem finalmente entendeu e pode soltar.</p>
+      <p class="revelar-desc">Você carregou isso por tempo demais: a ansiedade, o bloqueio, os relacionamentos que sempre terminam do mesmo jeito. Nesta etapa você se despede com a leveza de quem finalmente entendeu e pode soltar.</p>
     </div>
     <div class="revelar-step">
       <span class="revelar-letter">A</span>
       <span class="revelar-word">Agradecer</span>
-      <p class="revelar-desc">A gratidão não é sobre fingir que não doeu. É sobre reconhecer que cada experiência, por mais pesada que tenha sido, te trouxe até aqui, até este momento de transformação. Nesta etapa transmutamos o que foi sofrimento em sabedoria, e o que foi peso em combustível para a nova vida que começa.</p>
+      <p class="revelar-desc">Gratidão não é fingir que não doeu. É reconhecer que cada experiência te trouxe até aqui. Nesta etapa transmutamos o que foi sofrimento em sabedoria, e o que foi peso em combustível para a nova vida que começa.</p>
     </div>
     <div class="revelar-step">
       <span class="revelar-letter">R</span>
       <span class="revelar-word">Renascer</span>
-      <p class="revelar-desc">É aqui que tudo se completa. Depois de encontrar a raiz, ressignificar, integrar, elevar e libertar... você recebe a mensagem do seu Eu Superior. Aquela guiança que uma parte de você já sabia que precisava ouvir, mas que a vida corrida, a dor e o barulho do dia a dia não deixavam chegar. E então você renasce como Quem Você Realmente É.</p>
+      <p class="revelar-desc">É aqui que tudo se completa. Depois de resgatar, ressignificar, integrar, elevar e libertar, você recebe a mensagem do seu Eu Superior. E então renasce como Quem Você Realmente É.</p>
     </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testimonials-section">
+  <p class="section-label">Transformações reais</p>
+  <h2 class="section-title">O que dizem quem<br>já <em>atravessou o portal</em></h2>
+  <div class="gold-divider"></div>
+  <div class="testimonials-grid">
+    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/depoimento1_knsmjg.webp" alt="Depoimento 1">
+    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/depoimento2_n4keuv.webp" alt="Depoimento 2">
+    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378321/depoimento3_syvz68.webp" alt="Depoimento 3">
+    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378321/depoimento4_lxonto.webp" alt="Depoimento 4">
+  </div>
+  <div style="height:8px"></div>
+  <div class="testimonials-grid-2">
+    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378320/depoimento5_mcpsbg.webp" alt="Depoimento 5">
+    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378320/depoimento6_uq7x6e.webp" alt="Depoimento 6">
+    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378320/depoimento7_neycch.webp" alt="Depoimento 7">
+    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378320/depoimento8_dmalbz.webp" alt="Depoimento 8">
   </div>
 </section>
 
@@ -922,13 +993,12 @@
   </div>
 </section>
 
-  
 <!-- SOBRE LUCAS -->
 <section class="about-section">
   <div class="about-inner">
     <div class="about-imgs">
       <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/lucas_hipnotizando_michael_haaxk0.webp" alt="Lucas Radin em sessão">
-      <img src="hhttps://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/lucas_com_giancarlo_russo_em2fux.webp" alt="Lucas Radin com Giancarlo Russo">
+      <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/lucas_com_giancarlo_russo_em2fux.webp" alt="Lucas Radin com Giancarlo Russo">
       <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/certificado_omni_oapta3.webp" alt="Certificado HypnoCell Suíça">
     </div>
     <div class="about-text">
@@ -949,26 +1019,6 @@
         <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378320/certificado_hypnocell_m3bdvt.webp" alt="Certificado HypnoCell">
       </div>
     </div>
-  </div>
-</section>
-
-<!-- DEPOIMENTOS -->
-<section class="testimonials-section">
-  <p class="section-label">Transformações reais</p>
-  <h2 class="section-title">O que dizem quem<br>já <em>atravessou o portal</em></h2>
-  <div class="gold-divider"></div>
-  <div class="testimonials-grid">
-    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/depoimento1_knsmjg.webp" alt="Depoimento 1">
-    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/depoimento2_n4keuv.webp" alt="Depoimento 2">
-    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378321/depoimento3_syvz68.webp" alt="Depoimento 3">
-    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378321/depoimento4_lxonto.webp" alt="Depoimento 4">
-  </div>
-  <div style="height:8px"></div>
-  <div class="testimonials-grid-2">
-    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378320/depoimento5_mcpsbg.webp" alt="Depoimento 5">
-    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378320/depoimento6_uq7x6e.webp" alt="Depoimento 6">
-    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378320/depoimento7_neycch.webp" alt="Depoimento 7">
-    <img class="testimonial-img" src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378320/depoimento8_dmalbz.webp" alt="Depoimento 8">
   </div>
 </section>
 
@@ -1019,24 +1069,51 @@
 <footer>
   <div class="footer-logo">LUCAS RADIN</div>
   <div class="footer-text">
-    © 2025 Lucas Radin · Método REVELAR<br>
+    © 2026 Lucas Radin · Método REVELAR<br>
     Hipnoterapia 100% Online para todo o Brasil
   </div>
   <div class="footer-exu">
     <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378662/laroye_exu_cizgyc.png" alt="Laroye Exu">
   </div>
 </footer>
+
 <script>
-  // Rastrear cliques nos botões de WhatsApp
+  // Rastrear cliques nos botões de WhatsApp (inclui o botão flutuante)
   document.querySelectorAll('a[href*="wa.me"]').forEach(function(btn) {
     btn.addEventListener('click', function() {
-      var label = this.textContent.trim();
+      var label = this.textContent.trim() || this.getAttribute('aria-label') || 'whatsapp';
       gtag('event', 'click_whatsapp', {
         'event_category': 'botao',
         'event_label': label
       });
     });
   });
+
+  // Mostrar/esconder o botão flutuante de WhatsApp conforme o scroll
+  (function() {
+    var floatBtn = document.getElementById('floatingWhatsapp');
+    var hero = document.querySelector('.hero');
+    if (!floatBtn || !hero) return;
+
+    var threshold = hero.offsetHeight * 0.6;
+    var ticking = false;
+
+    function toggleButton() {
+      if (window.scrollY > threshold) {
+        floatBtn.classList.add('visible');
+      } else {
+        floatBtn.classList.remove('visible');
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(toggleButton);
+        ticking = true;
+      }
+    });
+  })();
 </script>
 </body>
 </html>
