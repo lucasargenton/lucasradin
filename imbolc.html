@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imbolc · Festival das Velas · Celebração ao Vivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    /* Imbolc: a última noite do inverno, pouco antes do amanhecer */
+    --fundo: #212836;         /* céu antes da alva */
+    --noite: #2C3547;         /* cards */
+    --azul-alva: #3E4C66;     /* bordas frias */
+    --prata: #A9B7CC;         /* luz fria */
+    --dourado: #D4A017;       /* âmbar da marca, a chama */
+    --dourado-claro: #F5E070; /* topo da chama */
+    --leite: #FDFBF6;         /* alimento sagrado de Imbolc */
+    --branco-suave: #E4DED0;  /* osso */
+    --vermelho: #A32020;
+    --vermelho-vivo: #C0392B;
+    --broto: #5A8C5E;         /* o primeiro verde */
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--fundo);
+    color: var(--leite);
+    font-family: 'EB Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* Estrelas da última noite de inverno */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 8% 12%, rgba(169,183,204,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(253,251,246,0.25) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 48% 8%, rgba(169,183,204,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 55%, rgba(253,251,246,0.2) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88% 20%, rgba(169,183,204,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 72%, rgba(253,251,246,0.18) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 62% 30%, rgba(169,183,204,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 88%, rgba(253,251,246,0.15) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Chama de vela no topo, a assinatura da página */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -140px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+    height: 460px;
+    background: radial-gradient(ellipse at center top, rgba(212,160,23,0.22) 0%, rgba(212,160,23,0.06) 45%, transparent 72%);
+    pointer-events: none;
+    z-index: 0;
+    animation: respiraChama 6s ease-in-out infinite;
+  }
+
+  @keyframes respiraChama {
+    0%, 100% { opacity: 0.85; transform: translateX(-50%) scale(1); }
+    50%      { opacity: 1;    transform: translateX(-50%) scale(1.06); }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ── HERO ───────────────────────────────── */
+
+  .badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    border: 0.5px solid rgba(212,160,23,0.4);
+    border-radius: 999px;
+    padding: 0.45rem 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .hero-simbolo {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.15s;
+    filter: drop-shadow(0 0 18px rgba(212,160,23,0.55));
+  }
+
+  .hero-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 3.4rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--dourado);
+    text-shadow: 0 0 32px rgba(212,160,23,0.35);
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.3s;
+  }
+
+  .hero-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--prata);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.45s;
+  }
+
+  .hero-frase {
+    font-size: 1.28rem;
+    font-style: italic;
+    color: var(--branco-suave);
+    line-height: 1.65;
+    max-width: 24rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.6s;
+  }
+
+  /* ── DIVISOR ────────────────────────────── */
+
+  .divisor {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 0 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.7s;
+  }
+
+  .divisor::before,
+  .divisor::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, rgba(212,160,23,0.45), transparent);
+  }
+
+  .divisor span {
+    color: var(--dourado);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── TEXTO ──────────────────────────────── */
+
+  .texto {
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.75s;
+  }
+
+  .texto p {
+    color: var(--branco-suave);
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+  }
+
+  .texto p:last-child { margin-bottom: 0; }
+
+  .texto strong {
+    color: var(--leite);
+    font-weight: 500;
+  }
+
+  /* ── MOTIVOS ────────────────────────────── */
+
+  .motivos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    width: 100%;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.85s;
+  }
+
+  .motivo {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: left;
+    background: rgba(44,53,71,0.72);
+    border: 0.5px solid rgba(169,183,204,0.18);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .motivo-icone {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  .motivo-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.92rem;
+    letter-spacing: 0.05em;
+    color: var(--dourado);
+    margin-bottom: 0.3rem;
+  }
+
+  .motivo-desc {
+    font-size: 1rem;
+    color: var(--branco-suave);
+    line-height: 1.55;
+  }
+
+  /* ── EVENTO ─────────────────────────────── */
+
+  .evento-card {
+    width: 100%;
+    max-width: 380px;
+    border: 0.5px solid rgba(212,160,23,0.45);
+    border-radius: 14px;
+    padding: 1.5rem 1.8rem;
+    background: rgba(44,53,71,0.8);
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.95s;
+  }
+
+  .evento-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--prata);
+    margin-bottom: 0.7rem;
+  }
+
+  .evento-data {
+    font-family: 'Cinzel', serif;
+    font-size: 1.35rem;
+    color: var(--leite);
+    margin-bottom: 0.25rem;
+  }
+
+  .evento-hora {
+    font-size: 1.05rem;
+    color: var(--dourado);
+    margin-bottom: 0.7rem;
+  }
+
+  .evento-formato {
+    font-size: 0.92rem;
+    color: var(--prata);
+    line-height: 1.5;
+  }
+
+  /* ── PREÇO ──────────────────────────────── */
+
+  .preco-wrap {
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.05s;
+  }
+
+  .preco-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--prata);
+    margin-bottom: 0.4rem;
+  }
+
+  .preco-valor {
+    font-family: 'Cinzel', serif;
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: var(--leite);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .preco-valor span {
+    font-size: 1.4rem;
+    color: var(--dourado);
+    vertical-align: super;
+    margin-right: 0.15rem;
+  }
+
+  .preco-desc {
+    font-size: 0.95rem;
+    color: var(--prata);
+  }
+
+  /* ── BOTÃO ──────────────────────────────── */
+
+  .btn-wrap {
+    width: 100%;
+    max-width: 380px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.15s;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--leite);
+    text-decoration: none;
+    background: linear-gradient(180deg, var(--vermelho-vivo), var(--vermelho));
+    border: 0.5px solid rgba(245,224,112,0.35);
+    border-radius: 999px;
+    padding: 1.15rem 1.5rem;
+    box-shadow: 0 8px 28px rgba(163,32,32,0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(163,32,32,0.55);
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--dourado-claro);
+    outline-offset: 3px;
+  }
+
+  .btn-sub {
+    font-size: 0.9rem;
+    color: var(--prata);
+    margin-top: 0.9rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.2s;
+  }
+
+  /* ── VAGA SOLIDÁRIA ─────────────────────── */
+
+  .solidaria {
+    width: 100%;
+    max-width: 380px;
+    margin-top: 3.5rem;
+    padding: 1.7rem 1.5rem;
+    text-align: center;
+    border: 0.5px dashed rgba(169,183,204,0.4);
+    border-radius: 14px;
+    background: rgba(44,53,71,0.45);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.25s;
+  }
+
+  .solidaria-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--prata);
+    margin-bottom: 0.9rem;
+  }
+
+  .solidaria-texto {
+    font-size: 1rem;
+    color: var(--branco-suave);
+    line-height: 1.65;
+    margin-bottom: 1.4rem;
+  }
+
+  .btn-solidaria {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--leite);
+    text-decoration: none;
+    background: transparent;
+    border: 0.5px solid rgba(169,183,204,0.55);
+    border-radius: 999px;
+    padding: 0.95rem 1.2rem;
+    line-height: 1.4;
+    transition: background 0.25s ease, border-color 0.25s ease;
+  }
+
+  .btn-solidaria:hover,
+  .btn-solidaria:focus-visible {
+    background: rgba(169,183,204,0.14);
+    border-color: rgba(212,160,23,0.6);
+  }
+
+  .btn-solidaria:focus-visible {
+    outline: 2px solid var(--dourado-claro);
+    outline-offset: 3px;
+  }
+
+  .solidaria-nota {
+    font-size: 0.85rem;
+    color: var(--prata);
+    line-height: 1.55;
+    margin-top: 1rem;
+  }
+
+  /* ── RODAPÉ ─────────────────────────────── */
+
+  .rodape {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--azul-alva);
+    margin-top: 3.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.3s;
+  }
+
+  /* ── ANIMAÇÃO ───────────────────────────── */
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    body::after { transform: translateX(-50%) !important; }
+  }
+
+  @media (max-width: 380px) {
+    .hero-titulo { font-size: 2.8rem; }
+    .preco-valor { font-size: 2.8rem; }
+    .container { padding: 2.5rem 1.2rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <span class="badge">☽ 13 de agosto · 19h30</span>
+  <div class="hero-simbolo">🕯️</div>
+  <h1 class="hero-titulo">Imbolc</h1>
+  <p class="hero-sub">O Festival das Velas</p>
+  <p class="hero-frase">
+    O inverno ainda não acabou.<br>
+    Mas a luz já está a caminho, e existe um trabalho a ser feito antes que ela chegue.
+  </p>
+
+  <div class="divisor"><span>☉</span></div>
+
+<!-- TEXTO -->
+  <div class="texto">
+    <p>
+      Tem coisa que você já devia ter soltado e continua carregando. Tem coisa querendo
+      nascer em você e sem espaço para isso. Esse acúmulo tem nome, e ele tem hora certa
+      de ser tratado.
+    </p>
+    <p>
+      <strong>Imbolc</strong> é essa hora. O meio do inverno, quando a luz dá o primeiro
+      sinal de retorno e os antigos acendiam velas para fortalecê-la. É o intervalo entre
+      o que morreu e o que ainda não floresceu, e é nele que o trabalho acontece.
+    </p>
+    <p>
+      Num ritual guiado do início ao fim, você vai <strong>varrer, queimar e transmutar</strong>
+      o que não serve mais, descobrir o que em você pede para ser nutrido, e levar embora um
+      amuleto de proteção e prosperidade para carregar até o próximo giro da Roda.
+    </p>
+  </div>
+
+  <!-- MOTIVOS -->
+  <div class="motivos">
+    <div class="motivo">
+      <span class="motivo-icone">🧹</span>
+      <div>
+        <p class="motivo-titulo">Varrer o que ficou</p>
+        <p class="motivo-desc">Uma jornada xamânica até a caverna do inconsciente, onde os padrões que te travam aparecem com nome. Depois, a transmutação pelo fogo.</p>
+      </div>
+    </div>
+    <div class="motivo">
+      <span class="motivo-icone">🥛</span>
+      <div>
+        <p class="motivo-titulo">Nutrir o que quer nascer</p>
+        <p class="motivo-desc">A subida até a cabana do Eu Superior. O que em você merece atenção, energia e crescimento... e a mensagem que ele espera há tempo para te entregar.</p>
+      </div>
+    </div>
+    <div class="motivo">
+      <span class="motivo-icone">🪢</span>
+      <div>
+        <p class="motivo-titulo">O amuleto dos oito nós</p>
+        <p class="motivo-desc">Você sai da celebração com um amuleto de proteção e prosperidade feito por suas mãos, para carregar até o próximo giro da Roda.</p>
+      </div>
+    </div>
+    <div class="motivo">
+      <span class="motivo-icone">🕯️</span>
+      <div>
+        <p class="motivo-titulo">O acendimento das chamas</p>
+        <p class="motivo-desc">O Festival das Velas em sua forma original: um círculo de chamas, cada uma com uma intenção sua, acesas na noite que anuncia a primavera.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATA -->
+  <div class="evento-card">
+    <p class="evento-label">Quando acontece</p>
+    <p class="evento-data">13 de agosto de 2026</p>
+    <p class="evento-hora">às 19h30 · ao vivo online</p>
+    <p class="evento-formato">Quinta-feira · duração aproximada de 1h30 · via transmissão ao vivo</p>
+  </div>
+
+  <!-- PREÇO -->
+  <div class="preco-wrap">
+    <p class="preco-label">Investimento</p>
+    <p class="preco-valor"><span>R$</span>57</p>
+    <p class="preco-desc">acesso à celebração ao vivo</p>
+  </div>
+
+  <!-- BOTÃO -->
+  <div class="btn-wrap">
+    <a href="#" class="btn">Quero acender a chama</a>
+  </div>
+  <p class="btn-sub">Após a inscrição você receberá a lista de materiais e o link de acesso</p>
+
+  <!-- VAGA SOLIDÁRIA -->
+  <div class="solidaria">
+    <p class="solidaria-titulo">Vaga solidária</p>
+    <p class="solidaria-texto">
+      Dinheiro não deveria ser a porta que impede alguém de entrar no círculo. Se este momento
+      da sua vida não permite pagar, existe uma vaga guardada para você.
+    </p>
+    <a href="#" class="btn-solidaria">Não posso pagar os R$57 e quero uma vaga solidária</a>
+    <p class="solidaria-nota">
+      Ao clicar, você está afirmando que realmente não tem condições de pagar agora.
+      Não pedimos comprovação de nada. Confiamos na sua palavra, e contamos com ela
+      para que a vaga chegue a quem precisa.
+    </p>
+  </div>
+
+  <p class="rodape">Lucas Radin · Ella Del Rey · A Roda do Ano</p>
+
+</div>
+
+</body>
+</html>
