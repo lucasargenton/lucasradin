@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  
+
   <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N0NMQK33HR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-N0NMQK33HR');
-</script>
-  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0NMQK33HR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N0NMQK33HR');
+    function track(label){
+      try { gtag('event', 'click_compra', { event_category: 'workshop', event_label: label }); } catch(e) {}
+    }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>O Reencontro: Experiência de Hipnose | Lucas Radin</title>
-  <meta name="description" content="Um workshop de hipnose para acessar quem você realmente é. 29 de outubro às 19h. Com Lucas Radin.">
+  <meta name="description" content="Uma noite de hipnose coletiva ao vivo para voltar a sentir clareza, leveza e paz. Quinta, 29 de outubro, às 19h, com Lucas Radin.">
+
+  <!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="O Reencontro: Experiência de Hipnose ao vivo">
+  <meta property="og:description" content="Uma noite para você se lembrar de quem é. Quinta, 29 de outubro, às 19h, com Lucas Radin.">
+  <meta property="og:image" content="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/Lucas_vers%C3%A3o_frequencias_camjuq.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -26,201 +40,372 @@
       --pearl: #f5f0ff; --white: #ffffff; --gray: #b0a0c8;
     }
 
-html { scroll-behavior: smooth; }
-body { background-color: var(--dark); color: var(--pearl); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; font-size: 18px; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--dark); color: var(--pearl); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; font-size: 18px; }
+    a { color: inherit; }
 
-.hero { min-height: 100vh; position: relative; display: flex; align-items: center; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, #2a0a4a 0%, #0d0118 60%); z-index: 0; }
-.hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; animation: float 8s ease-in-out infinite; }
-.hero-orb-1 { width: 600px; height: 600px; background: #5B3FA0; top: -100px; right: -100px; }
-.hero-orb-2 { width: 400px; height: 400px; background: #c9a84c; bottom: -100px; left: 10%; animation-delay: 3s; opacity: 0.15; }
-@keyframes float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
+    /* ---------- HERO ---------- */
+    .hero { min-height: 100vh; position: relative; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, #2a0a4a 0%, #0d0118 60%); z-index: 0; }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; animation: float 8s ease-in-out infinite; }
+    .hero-orb-1 { width: 600px; height: 600px; background: #5B3FA0; top: -100px; right: -100px; }
+    .hero-orb-2 { width: 400px; height: 400px; background: #c9a84c; bottom: -100px; left: 10%; animation-delay: 3s; opacity: 0.15; }
+    @keyframes float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
 
-.hero-content { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.hero-left { animation: fadeInLeft 1s ease forwards; }
-@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+    .hero-content { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 48px 40px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; }
+    .hero-left { animation: fadeInLeft 1s ease forwards; }
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
 
-.hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-.hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
-.hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-.hero-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); border: 1px solid rgba(155,127,212,0.3); padding: 5px 12px; border-radius: 20px; }
-.hero-tag.highlight { color: var(--gold); border-color: rgba(201,168,76,0.4); }
-.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(56px, 7vw, 88px); font-weight: 300; line-height: 1.0; color: var(--white); margin-bottom: 8px; letter-spacing: -0.02em; }
-.hero-title-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2vw, 28px); font-weight: 300; font-style: italic; color: var(--purple); margin-bottom: 36px; }
-.hero-desc { font-size: 18px; line-height: 1.8; color: var(--gray); margin-bottom: 40px; max-width: 480px; }
-.hero-desc strong { color: var(--pearl); font-weight: 400; }
+    .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+    .hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+    .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .hero-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.4); padding: 5px 12px; border-radius: 20px; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(56px, 7vw, 88px); font-weight: 300; line-height: 1.0; color: var(--white); margin-bottom: 8px; letter-spacing: -0.02em; }
+    .hero-title-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 2.2vw, 30px); font-weight: 300; font-style: italic; color: var(--purple); margin-bottom: 20px; }
+    .hero-desc { font-size: 18px; line-height: 1.8; color: var(--gray); margin-bottom: 22px; max-width: 500px; }
+    .hero-desc strong { color: var(--pearl); font-weight: 400; }
 
-.event-info { display: flex; gap: 32px; margin-bottom: 40px; flex-wrap: wrap; }
-.event-item { display: flex; flex-direction: column; gap: 4px; }
-.event-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
-.event-value { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--white); }
+    .hero-host { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 14px; color: var(--gray); }
+    .hero-host img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: top; border: 1px solid rgba(201,168,76,0.5); display: none; }
+    .hero-host strong { color: var(--pearl); font-weight: 500; }
 
-.cta-group { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-.btn-primary { display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: #1a0f00; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 18px 40px; border: none; cursor: pointer; text-decoration: none; transition: all 0.3s ease; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 60px rgba(201,168,76,0.4); }
-.btn-price { font-size: 13px; color: var(--gray); }
-.btn-price strong { color: var(--gold); font-weight: 600; }
+    .event-info { display: grid; grid-template-columns: auto auto; justify-content: start; gap: 14px 48px; margin-bottom: 24px; padding: 16px 0; max-width: 500px; border-top: 1px solid rgba(155,127,212,0.18); border-bottom: 1px solid rgba(155,127,212,0.18); }
+    .event-item { display: flex; flex-direction: column; gap: 4px; }
+    .event-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .event-value { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--white); }
 
-.hero-right { position: relative; display: flex; justify-content: center; animation: fadeInRight 1s ease 0.3s forwards; opacity: 0; }
-@keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
-.hero-image-wrap { position: relative; width: 100%; max-width: 480px; }
-.hero-image-wrap::before { content: ''; position: absolute; inset: -2px; background: linear-gradient(135deg, var(--gold) 0%, transparent 40%, var(--purple-deep) 100%); border-radius: 2px; opacity: 0.6; z-index: 0; }
-.hero-image { width: 100%; display: block; position: relative; z-index: 1; border-radius: 2px; }
-.hero-image-glow { position: absolute; inset: -60px; background: radial-gradient(ellipse, rgba(155,127,212,0.3) 0%, transparent 70%); z-index: 0; pointer-events: none; }
+    .cta-group { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+    .btn-primary, .btn-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; padding: 18px 40px; background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%); color: #1a0f00; font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 600; letter-spacing: 0.01em; line-height: 1.2; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; box-shadow: 0 8px 24px rgba(201,168,76,0.28), inset 0 1px 0 rgba(255,255,255,0.45); transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease; }
+    .btn-primary:hover, .btn-cta:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 14px 36px rgba(201,168,76,0.42), inset 0 1px 0 rgba(255,255,255,0.45); }
+    .btn-primary:active, .btn-cta:active { transform: translateY(0); box-shadow: 0 4px 12px rgba(201,168,76,0.3); }
+    .btn-primary:focus-visible, .btn-cta:focus-visible { outline: 2px solid var(--pearl); outline-offset: 3px; }
+    .btn-micro { font-size: 13px; color: var(--gray); }
+    .btn-micro strong { color: var(--gold); font-weight: 600; }
+    .btn-link { font-size: 14px; color: var(--purple); text-decoration: none; border-bottom: 1px solid rgba(155,127,212,0.4); padding-bottom: 2px; }
+    .btn-link:hover { color: var(--gold); border-color: var(--gold); }
+    .bonus-pill { font-size: 12px; color: var(--gold); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); padding: 6px 14px; border-radius: 20px; letter-spacing: 0.02em; display: inline-block; line-height: 1.5; }
 
-.divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--purple-deep), transparent); }
+    .hero-right { position: relative; display: flex; justify-content: center; animation: fadeInRight 1s ease 0.3s forwards; opacity: 0; }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+    .hero-image-wrap { position: relative; width: 100%; max-width: 480px; }
+    .hero-image-wrap::before { content: ''; position: absolute; inset: -2px; background: linear-gradient(135deg, var(--gold) 0%, transparent 40%, var(--purple-deep) 100%); border-radius: 2px; opacity: 0.6; z-index: 0; }
+    .hero-image { width: 100%; height: auto; display: block; position: relative; z-index: 1; border-radius: 2px; }
+    .hero-image-glow { position: absolute; inset: -60px; background: radial-gradient(ellipse, rgba(155,127,212,0.3) 0%, transparent 70%); z-index: 0; pointer-events: none; }
 
-.section { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
-.section-eyebrow { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-.section-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
-.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 24px; }
-.section-title em { font-style: italic; color: var(--purple); }
+    /* ---------- PROVA RÁPIDA ---------- */
+    .proof-bar { border-top: 1px solid rgba(155,127,212,0.15); border-bottom: 1px solid rgba(155,127,212,0.15); background: rgba(91,63,160,0.06); }
+    .proof-inner { max-width: 1200px; margin: 0 auto; padding: 28px 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+    .proof-num { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .proof-label { font-size: 13px; color: var(--gray); letter-spacing: 0.04em; }
 
-.promise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.promise-text p { font-size: 18px; line-height: 1.9; color: var(--gray); margin-bottom: 20px; }
-.promise-text p strong { color: var(--pearl); font-weight: 400; }
-.promise-quote { border-left: 2px solid var(--gold); padding: 24px 32px; margin: 32px 0; background: rgba(201,168,76,0.05); }
-.promise-quote p { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; line-height: 1.5; color: var(--pearl); margin: 0; }
+    /* ---------- BASE DE SEÇÕES ---------- */
+    .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--purple-deep), transparent); }
+    .section { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
+    .section-eyebrow { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+    .section-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+    .section-eyebrow.center { justify-content: center; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 24px; }
+    .section-title em { font-style: italic; color: var(--purple); }
+    .center-cta { text-align: center; padding: 0 40px 90px; }
 
-.promise-card { background: linear-gradient(135deg, rgba(91,63,160,0.15) 0%, rgba(13,1,24,0.8) 100%); border: 1px solid rgba(155,127,212,0.2); padding: 48px 40px; position: relative; overflow: hidden; }
-.promise-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--purple)); }
-.promise-card-title { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; }
-.promise-item { display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start; }
-.promise-item:last-child { margin-bottom: 0; }
-.promise-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 8px; flex-shrink: 0; }
-.promise-item-text { font-size: 18px; line-height: 1.8; color: var(--gray); }
-.promise-item-text strong { display: block; color: var(--pearl); font-weight: 500; margin-bottom: 4px; font-size: 20px; }
-.promise-item-text.special strong { color: var(--purple); }
+    /* ---------- PARA QUEM É ---------- */
+    .who-section { background: linear-gradient(180deg, var(--dark) 0%, #120220 50%, var(--dark) 100%); padding: 100px 0 60px; }
+    .who-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+    .who-item { padding: 40px 32px; background: rgba(155,127,212,0.05); border: 1px solid rgba(155,127,212,0.1); transition: background 0.3s ease; position: relative; overflow: hidden; }
+    .who-item::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+    .who-item:hover::before { transform: scaleX(1); }
+    .who-item:hover { background: rgba(155,127,212,0.1); }
+    .who-number { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: rgba(201,168,76,0.25); line-height: 1; margin-bottom: 16px; }
+    .who-text { font-size: 18px; line-height: 1.7; color: var(--gray); }
 
-.who-section { background: linear-gradient(180deg, var(--dark) 0%, #120220 50%, var(--dark) 100%); padding: 100px 0; }
-.who-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-.who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
-.who-item { padding: 40px 32px; background: rgba(155,127,212,0.05); border: 1px solid rgba(155,127,212,0.1); transition: all 0.3s ease; position: relative; overflow: hidden; }
-.who-item::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
-.who-item:hover::before { transform: scaleX(1); }
-.who-item:hover { background: rgba(155,127,212,0.1); }
-.who-number { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: rgba(201,168,76,0.2); line-height: 1; margin-bottom: 16px; }
-.who-text { font-size: 18px; line-height: 1.7; color: var(--gray); }
+    /* ---------- A NÉVOA + O QUE VOCÊ VAI VIVER ---------- */
+    .promise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .promise-text p { font-size: 18px; line-height: 1.9; color: var(--gray); margin-bottom: 20px; }
+    .promise-text p strong { color: var(--pearl); font-weight: 400; }
+    .promise-quote { border-left: 2px solid var(--gold); padding: 24px 32px; margin: 32px 0; background: rgba(201,168,76,0.05); }
+    .promise-quote p { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; line-height: 1.5; color: var(--pearl); margin: 0; }
 
-.about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
-.about-image-wrap { position: sticky; top: 40px; }
-.about-image { width: 100%; display: block; filter: grayscale(20%) contrast(1.1); }
-.about-image-frame { position: relative; }
-.about-image-frame::after { content: ''; position: absolute; bottom: -16px; right: -16px; width: 100%; height: 100%; border: 1px solid rgba(201,168,76,0.3); pointer-events: none; }
-.about-text p { font-size: 18px; line-height: 1.9; color: var(--gray); margin-bottom: 20px; }
-.about-text p strong { color: var(--pearl); font-weight: 400; }
-.about-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; padding-top: 48px; border-top: 1px solid rgba(155,127,212,0.2); }
-.stat { display: flex; flex-direction: column; gap: 4px; }
-.stat-number { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--gold); line-height: 1; }
-.stat-label { font-size: 13px; color: var(--gray); }
+    .promise-card { background: linear-gradient(135deg, rgba(91,63,160,0.15) 0%, rgba(13,1,24,0.8) 100%); border: 1px solid rgba(155,127,212,0.2); padding: 48px 40px; position: relative; overflow: hidden; }
+    .promise-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--purple)); }
+    .promise-card-title { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; }
+    .promise-item { display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start; }
+    .promise-item:last-child { margin-bottom: 0; }
+    .promise-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 10px; flex-shrink: 0; }
+    .promise-item-text { font-size: 18px; line-height: 1.8; color: var(--gray); }
+    .promise-item-text strong { display: block; color: var(--pearl); font-weight: 500; margin-bottom: 4px; font-size: 20px; }
+    .promise-item-text.special strong { color: var(--purple); }
 
-.cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; }
-.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(91,63,160,0.2) 0%, transparent 70%); }
-.cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-.cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 16px; }
-.cta-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--purple); margin-bottom: 48px; }
-.cta-box { background: linear-gradient(135deg, rgba(91,63,160,0.15), rgba(13,1,24,0.9)); border: 1px solid rgba(201,168,76,0.3); padding: 48px; margin-bottom: 40px; position: relative; }
-.cta-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-.cta-details { display: flex; justify-content: center; gap: 48px; margin-bottom: 40px; flex-wrap: wrap; }
-.cta-detail { text-align: center; }
-.cta-detail-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-.cta-detail-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--white); }
-.cta-price-wrap { margin-bottom: 32px; }
-.cta-price-label { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
-.cta-price { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; color: var(--gold); line-height: 1; }
-.cta-price span { font-size: 24px; vertical-align: super; }
-.cta-price-note { font-size: 13px; color: var(--gray); margin-top: 8px; }
-.btn-cta { display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: #1a0f00; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 20px 56px; border: none; cursor: pointer; text-decoration: none; transition: all 0.3s ease; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
-.btn-cta:hover { transform: translateY(-3px); box-shadow: 0 24px 80px rgba(201,168,76,0.5); }
-.whatsapp-btn { display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(155,127,212,0.4); color: var(--gray); font-family: 'Outfit', sans-serif; font-size: 13px; padding: 14px 28px; text-decoration: none; transition: all 0.3s ease; margin-top: 16px; }
-.whatsapp-btn:hover { border-color: var(--gold); color: var(--gold); }
+    /* ---------- COMO VAI SER A NOITE ---------- */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; counter-reset: step; }
+    .step { position: relative; padding: 36px 28px 32px; border: 1px solid rgba(155,127,212,0.15); background: rgba(155,127,212,0.04); }
+    .step-num { font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .step-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: var(--white); line-height: 1.2; margin-bottom: 12px; }
+    .step-text { font-size: 17px; line-height: 1.7; color: var(--gray); }
 
-footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,212,0.1); }
-.footer-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--pearl); margin-bottom: 8px; }
-.footer-text { font-size: 12px; color: var(--gray); }
+    .prep { margin-top: 40px; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start; padding: 40px; border: 1px solid rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+    .prep-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--white); line-height: 1.2; }
+    .prep-title span { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; color: var(--gray); margin-top: 10px; line-height: 1.6; }
+    .prep-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px; }
+    .prep-list li { font-size: 17px; color: var(--pearl); line-height: 1.6; padding-left: 22px; position: relative; }
+    .prep-list li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; border: 1px solid var(--gold); transform: rotate(45deg); }
 
-@media (max-width: 768px) {
-  .hero-content { grid-template-columns: 1fr; padding: 60px 24px; gap: 48px; }
-  .hero-right { order: -1; }
-  .promise-grid, .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  .who-grid { grid-template-columns: 1fr; }
-  .section { padding: 60px 24px; }
-  .cta-section { padding: 80px 24px; }
-  .cta-box { padding: 32px 24px; }
-  .cta-details { gap: 24px; }
-  .about-image-wrap { position: static; }
-  .about-stats { grid-template-columns: 1fr 1fr; }
-  body { font-size: 20px; }
-  .hero-desc { font-size: 20px; }
-  .promise-text p { font-size: 20px; }
-  .about-text p { font-size: 20px; }
-  .who-text { font-size: 20px; }
-  .promise-item-text { font-size: 20px; }
-  .promise-item-text strong { font-size: 21px; }
-}
+    /* ---------- QUEM CONDUZ ---------- */
+    .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+    .about-image-wrap { position: sticky; top: 40px; }
+    .about-image { width: 100%; height: auto; display: block; filter: grayscale(20%) contrast(1.1); }
+    .about-image-frame { position: relative; }
+    .about-image-frame::after { content: ''; position: absolute; bottom: -16px; right: -16px; width: 100%; height: 100%; border: 1px solid rgba(201,168,76,0.3); pointer-events: none; }
+    .about-text p { font-size: 18px; line-height: 1.9; color: var(--gray); margin-bottom: 20px; }
+    .about-text p strong { color: var(--pearl); font-weight: 400; }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; padding-top: 48px; border-top: 1px solid rgba(155,127,212,0.2); }
+    .stat { display: flex; flex-direction: column; gap: 6px; }
+    .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 13px; color: var(--gray); line-height: 1.4; }
 
+    /* ---------- DEPOIMENTOS (ativar quando houver) ---------- */
+    .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; align-items: start; }
+    .testimonial-img { margin: 0; border: 1px solid rgba(155,127,212,0.2); border-radius: 12px; overflow: hidden; background: rgba(155,127,212,0.05); }
+    .testimonial-img img { width: 100%; height: auto; display: block; }
+
+    /* ---------- OFERTA ---------- */
+    .cta-section { padding: 110px 40px; text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(91,63,160,0.2) 0%, transparent 70%); }
+    .cta-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+    .cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 14px; }
+    .cta-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--purple); margin-bottom: 40px; }
+    .cta-box { background: linear-gradient(135deg, rgba(91,63,160,0.15), rgba(13,1,24,0.9)); border: 1px solid rgba(201,168,76,0.3); padding: 48px; margin-bottom: 32px; position: relative; text-align: left; }
+    .cta-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .includes-title { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .includes { list-style: none; margin-bottom: 36px; }
+    .includes li { display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.6; color: var(--pearl); padding: 12px 0; border-bottom: 1px solid rgba(155,127,212,0.12); }
+    .includes li:last-child { border-bottom: none; }
+    .check { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; display: inline-flex; align-items: center; justify-content: center; margin-top: 3px; }
+    .cta-details { display: flex; justify-content: center; gap: 36px; margin-bottom: 8px; flex-wrap: wrap; text-align: center; padding-top: 28px; border-top: 1px solid rgba(155,127,212,0.18); }
+    .cta-detail-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .cta-detail-value { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--white); }
+    .countdown-wrap { margin: 28px 0 0; text-align: center; }
+    .countdown-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .countdown { display: flex; justify-content: center; gap: 14px; margin-bottom: 24px; }
+    .cd-unit { text-align: center; min-width: 56px; }
+    .cd-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--white); line-height: 1; }
+    .cd-lab { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+    .cd-sep { font-family: 'Cormorant Garamond', serif; font-size: 48px; color: var(--gold); line-height: 1; }
+    .cta-price-wrap { margin-bottom: 28px; text-align: center; }
+    .cta-price-label { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+    .cta-price { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; color: var(--gold); line-height: 1; }
+    .cta-price span { font-size: 24px; vertical-align: super; }
+    .cta-price-note { font-size: 13px; color: var(--gray); margin-top: 8px; }
+    .cta-btn-wrap { text-align: center; }
+    .btn-cta { padding: 20px 56px; }
+    .secure-note { font-size: 12px; color: var(--gray); margin-top: 14px; text-align: center; }
+    .permission { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; color: var(--pearl); margin-bottom: 36px; line-height: 1.4; }
+    .whatsapp-link { display: inline-block; margin-top: 8px; font-size: 15px; color: var(--gray); line-height: 1.6; }
+    .whatsapp-link a { color: var(--purple); text-decoration: underline; text-underline-offset: 3px; }
+    .whatsapp-link a:hover { color: var(--gold); }
+
+    /* ---------- FAQ ---------- */
+    .faq-wrap { max-width: 860px; margin: 0 auto; }
+    .faq { margin-top: 40px; border-top: 1px solid rgba(155,127,212,0.2); }
+    .faq details { border-bottom: 1px solid rgba(155,127,212,0.2); }
+    .faq summary { list-style: none; cursor: pointer; padding: 26px 48px 26px 0; position: relative; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--white); line-height: 1.3; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 300; color: var(--gold); transition: transform 0.3s ease; }
+    .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+    .faq summary:hover { color: var(--gold-light); }
+    .faq-answer { padding: 0 0 28px; }
+    .faq-answer p { font-size: 18px; line-height: 1.8; color: var(--gray); margin-bottom: 12px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer strong { color: var(--pearl); font-weight: 400; }
+    .faq-answer a { color: var(--gold); }
+
+    .closing { text-align: center; padding: 20px 40px 120px; }
+    .closing-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 4vw, 44px); font-weight: 300; color: var(--white); line-height: 1.25; margin-bottom: 32px; }
+    .closing-text em { color: var(--purple); }
+
+    footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,212,0.1); }
+    .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--pearl); margin-bottom: 8px; }
+    .footer-text { font-size: 12px; color: var(--gray); line-height: 1.7; }
+
+    /* ---------- BARRA FIXA NO CELULAR ---------- */
+    .sticky-cta { display: none; }
+
+    @media (max-width: 960px) {
+      .steps { grid-template-columns: 1fr 1fr; }
+      .prep { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    @media (max-width: 768px) {
+      body { font-size: 20px; }
+      .hero { min-height: auto; }
+      /* No celular: data, preço e botão aparecem antes do texto, na primeira tela */
+      .hero-content { grid-template-columns: 1fr; padding: 40px 22px 56px; gap: 0; }
+      .hero-right { display: none; }
+      .hero-left { display: flex; flex-direction: column; }
+      .hero-eyebrow { order: 1; letter-spacing: 0.25em; margin-bottom: 16px; }
+      .hero-tags { display: none; }
+      .hero-title { order: 2; font-size: 56px; }
+      .hero-title-sub { order: 3; margin-bottom: 20px; }
+      .hero-host { order: 4; margin-bottom: 20px; }
+      .hero-host img { display: block; }
+      .event-info { order: 5; gap: 14px 28px; margin-bottom: 22px; padding: 16px 0; }
+      .cta-group { order: 6; align-items: stretch; }
+      .hero-desc { order: 7; font-size: 19px; margin: 32px 0 0; }
+      .btn-primary { width: 100%; padding: 19px 24px; }
+      .btn-micro { text-align: center; }
+      .bonus-pill { text-align: center; }
+      .btn-link { display: none; }
+
+      .proof-inner { padding: 24px 16px; gap: 10px; }
+      .proof-num { font-size: 28px; }
+      .proof-label { font-size: 12px; }
+
+      .section { padding: 64px 22px; }
+      .who-section { padding: 64px 0 40px; }
+      .who-inner { padding: 0 22px; }
+      .who-grid { grid-template-columns: 1fr; margin-top: 32px; }
+      .who-item { padding: 28px 24px; }
+      .who-number { font-size: 36px; margin-bottom: 10px; }
+      .promise-grid, .about-grid { grid-template-columns: 1fr; gap: 44px; }
+      .promise-card { padding: 36px 24px; }
+      .steps { grid-template-columns: 1fr; margin-top: 32px; gap: 14px; }
+      .step { padding: 28px 24px; }
+      .prep { padding: 28px 24px; }
+      .prep-list { grid-template-columns: 1fr; }
+      .about-image-wrap { position: static; max-width: 360px; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .stat-number { font-size: 36px; }
+      .testimonials { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 32px -22px 0; padding: 0 22px 12px; -webkit-overflow-scrolling: touch; }
+      .testimonial-img { flex: 0 0 82%; scroll-snap-align: center; }
+      .center-cta { padding: 0 22px 64px; }
+      .center-cta .btn-cta { width: 100%; }
+
+      .cta-section { padding: 72px 22px; }
+      .cta-box { padding: 32px 22px; }
+      .includes li { font-size: 18px; }
+      .cta-details { gap: 20px 28px; }
+      .countdown { gap: 6px; }
+      .cd-unit { min-width: 44px; }
+      .cd-num, .cd-sep { font-size: 40px; }
+      .btn-cta { width: 100%; padding: 20px 24px; }
+
+      .faq summary { font-size: 22px; padding: 22px 40px 22px 0; }
+      .closing { padding: 10px 22px 80px; }
+
+      .promise-text p, .about-text p, .who-text, .promise-item-text, .faq-answer p { font-size: 19px; }
+      .promise-item-text strong { font-size: 21px; }
+
+      .sticky-cta { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: rgba(13,1,24,0.96); border-top: 1px solid rgba(201,168,76,0.35); backdrop-filter: blur(8px); transform: translateY(110%); transition: transform 0.35s ease; }
+      .sticky-cta.show { transform: translateY(0); }
+      .sticky-info { font-size: 13px; color: var(--gray); line-height: 1.35; }
+      .sticky-info strong { display: block; color: var(--white); font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 500; }
+      .sticky-btn { flex-shrink: 0; background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%); color: #1a0f00; font-weight: 600; font-size: 16px; text-decoration: none; padding: 14px 20px; border-radius: 10px; box-shadow: 0 6px 18px rgba(201,168,76,0.3), inset 0 1px 0 rgba(255,255,255,0.45); }
+      footer { padding-bottom: 110px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-orb, .hero-left, .hero-right { animation: none; }
+      .hero-right { opacity: 1; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- =============== 1. HERO =============== -->
   <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
-  <div class="hero-content">
-    <div class="hero-left">
-      <div class="hero-eyebrow">Experiência de Hipnose</div>
-      <div class="hero-tags">
-        <span class="hero-tag highlight">Hipnose</span>
-        <span class="hero-tag highlight">Regressão</span>
-        <span class="hero-tag highlight">Âncora Emocional</span>
-      </div>
-      <h1 class="hero-title">O Reencontro</h1>
-      <p class="hero-title-sub">Um workshop para acessar quem você realmente é</p>
-      <p class="hero-desc">Clareza. Leveza. Paz. A sensação de saber quem você é e para onde vai. Sem ansiedade. Sem aquela voz que questiona tudo.<br><br><strong>O Reencontro é uma experiência de hipnose para você voltar a sentir isso. E ao final, você vai receber uma âncora (um gesto simples) para acessar esse estado sempre que precisar.</strong></p>
-      <div class="event-info">
-        <div class="event-item">
-          <span class="event-label">Data</span>
-          <span class="event-value">29 de outubro</span>
+    <div class="hero-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Experiência de hipnose ao vivo</div>
+        <div class="hero-tags">
+          <span class="hero-tag">Hipnose</span>
+          <span class="hero-tag">Regressão</span>
+          <span class="hero-tag">Âncora emocional</span>
         </div>
-        <div class="event-item">
-          <span class="event-label">Horário</span>
-          <span class="event-value">19h00</span>
+        <h1 class="hero-title">O Reencontro</h1>
+        <p class="hero-title-sub">Uma noite para você se lembrar de quem é</p>
+        <p class="hero-desc">Clareza. Leveza. Paz. A sensação de saber quem você é e para onde vai. Sem ansiedade. Sem aquela voz que questiona tudo.<br><br><strong>O Reencontro é uma hipnose coletiva guiada para você voltar a sentir isso. E no final, você recebe uma âncora, um gesto simples, para acessar esse estado sempre que precisar.</strong></p>
+
+        <div class="hero-host">
+          <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/Lucas_vers%C3%A3o_frequencias_camjuq.webp" alt="" width="44" height="44">
+          <span>Com <strong>Lucas Radin</strong>, hipnoterapeuta há mais de 8 anos</span>
         </div>
-        <div class="event-item">
-          <span class="event-label">Investimento</span>
-          <span class="event-value">R$ 137</span>
+
+        <div class="event-info">
+          <div class="event-item">
+            <span class="event-label">Data</span>
+            <span class="event-value">Quinta, 29 de outubro</span>
+          </div>
+          <div class="event-item">
+            <span class="event-label">Horário</span>
+            <span class="event-value">19h (Brasília)</span>
+          </div>
+          <div class="event-item">
+            <span class="event-label">Onde</span>
+            <span class="event-value">Ao vivo, Google Meet</span>
+          </div>
+          <div class="event-item">
+            <span class="event-label">Investimento</span>
+            <span class="event-value">R$ 137</span>
+          </div>
+        </div>
+
+        <div class="cta-group">
+          <a id="hero-cta" href="https://pay.kiwify.com.br/j87CVEP" class="btn-primary" onclick="track('hero')">Quero garantir minha vaga →</a>
+          <span class="btn-micro">PIX ou até 12x · Gravação disponível por <strong>7 dias</strong></span>
+          <span class="bonus-pill">🎟 Inscreva-se hoje e entre no grupo exclusivo da experiência no WhatsApp</span>
+          <a href="#como-funciona" class="btn-link">Ver como vai ser a noite ↓</a>
         </div>
       </div>
-      <div style="margin-top:-20px; margin-bottom:28px;">
-        <span style="font-size:12px; color:var(--gold); background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); padding:5px 14px; border-radius:20px; letter-spacing:0.04em; display:inline-block;">
-          🎟 Inscreva-se hoje e entre no grupo exclusivo da experiência no WhatsApp!
-        </span>
-      </div>
-      <div class="cta-group">
-        <a href="#promise" class="btn-primary">Saber mais ↓</a>
-        <span class="btn-price">Gravação disponível por <strong>7 dias</strong> após o evento</span>
+      <div class="hero-right">
+        <div class="hero-image-glow"></div>
+        <div class="hero-image-wrap">
+          <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/Lucas_vers%C3%A3o_frequencias_camjuq.webp" alt="Lucas Radin, hipnoterapeuta" class="hero-image" fetchpriority="high">
+        </div>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-image-glow"></div>
-      <div class="hero-image-wrap">
-        <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/Lucas_vers%C3%A3o_frequencias_camjuq.webp" alt="Lucas Radin" class="hero-image">
-      </div>
+  </section>
+
+  <!-- =============== 2. PROVA RÁPIDA =============== -->
+  <!-- Confirme o número de participantes: 40 + 61 nas duas últimas edições -->
+  <div class="proof-bar">
+    <div class="proof-inner">
+      <div><div class="proof-num">8+</div><div class="proof-label">anos de hipnoterapia</div></div>
+      <div><div class="proof-num">+100</div><div class="proof-label">participantes nas últimas edições</div></div>
+      <div><div class="proof-num">100%</div><div class="proof-label">online, de onde você estiver</div></div>
     </div>
   </div>
-</section>
-  
+
+  <!-- =============== 3. PARA QUEM É =============== -->
+  <section class="who-section">
+    <div class="who-inner">
+      <div class="section-eyebrow">Para quem é</div>
+      <h2 class="section-title">Talvez você esteja aqui<br><em>porque reconhece isso</em></h2>
+      <div class="who-grid">
+        <div class="who-item"><div class="who-number">01</div><p class="who-text">Sente que perdeu a conexão consigo mesma, como se existisse uma versão sua mais inteira que você não consegue mais acessar.</p></div>
+        <div class="who-item"><div class="who-number">02</div><p class="who-text">Já tentou mudar padrões que se repetem e não conseguiu manter. Entende tudo na teoria, e mesmo assim eles voltam.</p></div>
+        <div class="who-item"><div class="who-number">03</div><p class="who-text">Quer sentir algo bom de verdade: equilíbrio, clareza, propósito. Sem depender de nada de fora.</p></div>
+        <div class="who-item"><div class="who-number">04</div><p class="who-text">Tem abertura espiritual e curiosidade sobre o que a hipnose pode mostrar além da mente consciente.</p></div>
+        <div class="who-item"><div class="who-number">05</div><p class="who-text">Já passou por outras terapias e práticas e sente que ainda existe algo mais profundo esperando para ser visto.</p></div>
+        <div class="who-item"><div class="who-number">06</div><p class="who-text">Quer uma experiência real. Não uma aula, não uma meditação genérica. Algo que você sinta no corpo e leve para a vida.</p></div>
+      </div>
+    </div>
+  </section>
+
   <div class="divider"></div>
 
+  <!-- =============== 4. O QUE É + O QUE VOCÊ VAI VIVER =============== -->
   <section id="promise">
     <div class="section">
       <div class="promise-grid">
         <div class="promise-text">
-          <div class="section-eyebrow">O que é isso</div>
+          <div class="section-eyebrow">O que é O Reencontro</div>
           <h2 class="section-title">A névoa que cobre<br><em>quem você é</em></h2>
-          <p>Ao longo do caminho, programações antigas, memórias de dor e padrões que se repetem foram criando uma névoa. E essa névoa foi ofuscando quem você realmente é... não apagando, <strong>só cobrindo.</strong></p>
-          <p>Quem você realmente é está conectada. Com propósito. Com alegria de estar viva. Com disposição para criar a realidade que deseja e viver em paz.</p>
+          <p>Ao longo do caminho, programações antigas, memórias de dor e padrões que se repetem foram criando uma névoa. E essa névoa foi encobrindo quem você realmente é... não apagando, <strong>só cobrindo.</strong></p>
+          <p>Por baixo dela, você continua conectada. Com propósito. Com alegria de estar viva. Com disposição para criar a realidade que deseja e viver em paz.</p>
           <div class="promise-quote"><p>"Você não vai descobrir algo novo. Vai se lembrar de algo que nunca foi embora."</p></div>
           <p>E quem vai te guiar nessa jornada não sou eu. <strong>É o seu Eu Superior:</strong> a parte de você que está além dos medos e das crenças limitantes. A parte que nunca esqueceu quem você é.</p>
         </div>
@@ -232,7 +417,7 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
               <div class="promise-dot"></div>
               <div class="promise-item-text">
                 <strong>Entender por que os padrões se repetem</strong>
-                Mesmo quando você tenta mudar... e o que realmente está por baixo disso.
+                Mesmo quando você tenta mudar... e por que a força de vontade sozinha não dá conta.
               </div>
             </div>
 
@@ -240,7 +425,7 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
               <div class="promise-dot"></div>
               <div class="promise-item-text">
                 <strong>Uma hipnose coletiva guiada pelo seu Eu Superior</strong>
-                Em estado theta, sua consciência pode ir além da mente consciente, acessando memórias desta vida ou de outras. Seu Eu Superior sabe exatamente onde te levar para resgatar a conexão, a clareza, o equilíbrio e a alegria que sempre estiveram em você.
+                Em um estado profundo de relaxamento, sua consciência vai além da mente racional para resgatar a conexão, a clareza e a alegria que sempre estiveram em você.
               </div>
             </div>
 
@@ -248,22 +433,22 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
               <div class="promise-dot"></div>
               <div class="promise-item-text special">
                 <strong>Uma jornada que pode ir além desta vida</strong>
-                Em hipnose, sua consciência pode acessar memórias desta vida ou de outras. Seu Eu Superior sabe exatamente onde te levar, e o que você precisa ver para se libertar do que te prende.
+                Na hipnose, sua consciência pode visitar memórias desta vida ou de vidas passadas. Algumas pessoas veem cenas, outras sentem, outras recebem uma paz profunda. O que vier é o que você precisava viver nessa noite.
               </div>
             </div>
 
             <div class="promise-item">
               <div class="promise-dot"></div>
               <div class="promise-item-text">
-                <strong>Uma âncora: um presente para levar</strong>
-                Um gesto simples que vai te permitir voltar a esse estado sempre que precisar, onde quer que você esteja.
+                <strong>Uma âncora para levar com você</strong>
+                Um gesto simples que te permite voltar a esse estado sempre que precisar, onde quer que você esteja.
               </div>
             </div>
 
             <div class="promise-item">
               <div class="promise-dot"></div>
               <div class="promise-item-text">
-                <strong>Sair diferente de como entrou</strong>
+                <strong>Sair mais leve do que entrou</strong>
                 Não porque algo foi adicionado. Mas porque você se lembrou de quem é.
               </div>
             </div>
@@ -273,144 +458,295 @@ footer { padding: 40px; text-align: center; border-top: 1px solid rgba(155,127,2
     </div>
   </section>
 
-<div style="text-align: center; padding: 0 40px 80px;">
-  <a href="#cta" class="btn-cta" onclick="gtag('event', 'click_compra', {'event_category': 'workshop', 'event_label': 'quero_viver_isso'})">Quero viver isso! →</a>
-</div>
-  
+  <div class="center-cta">
+    <a href="https://pay.kiwify.com.br/j87CVEP" class="btn-cta" onclick="track('quero_viver_isso')">Quero viver isso →</a>
+  </div>
+
   <div class="divider"></div>
 
-  <section class="who-section">
-    <div class="who-inner">
-      <div class="section-eyebrow">Para quem é</div>
-      <h2 class="section-title">Você está no lugar certo<br><em>se reconhece isso</em></h2>
-      <div class="who-grid">
-        <div class="who-item"><div class="who-number">01</div><p class="who-text">Sente que perdeu a conexão consigo mesmo, como se existisse uma versão sua mais inteira que você não consegue mais acessar.</p></div>
-        <div class="who-item"><div class="who-number">02</div><p class="who-text">Já tentou mudar padrões que se repetem na sua vida e não conseguiu manter. Sabe que o problema está em algum lugar mais fundo.</p></div>
-        <div class="who-item"><div class="who-number">03</div><p class="who-text">Quer sentir algo bom de verdade: equilíbrio, clareza, propósito, e não sabe como chegar até isso sem depender de nada externo.</p></div>
-        <div class="who-item"><div class="who-number">04</div><p class="who-text">Tem abertura espiritual e curiosidade sobre como a hipnose pode te ajudar a acessar o que está além da mente consciente.</p></div>
-        <div class="who-item"><div class="who-number">05</div><p class="who-text">Já tentou outras terapias ou práticas e sente que ainda não acessou o pleno potencial. Sabe que existe algo mais profundo esperando para ser visto.</p></div>
-        <div class="who-item"><div class="who-number">06</div><p class="who-text">Quer uma experiência real, não uma aula, não uma meditação genérica. Algo que você sinta no corpo e leve para a vida.</p></div>
+  <!-- =============== 5. COMO VAI SER A NOITE =============== -->
+  <section id="como-funciona">
+    <div class="section">
+      <div class="section-eyebrow">Como funciona</div>
+      <h2 class="section-title">Como vai ser <em>a noite</em></h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">Parte 1</div>
+          <div class="step-title">Abertura</div>
+          <p class="step-text">Uma conversa para você entender por que os padrões se repetem e como a mente continua guardando o que já passou.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">Parte 2</div>
+          <div class="step-title">Entrada na hipnose</div>
+          <p class="step-text">Você é conduzida, com calma, para um relaxamento profundo. Sem esforço e sem precisar "conseguir" nada.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">Parte 3</div>
+          <div class="step-title">A jornada</div>
+          <p class="step-text">Guiada pelo seu Eu Superior, sua consciência vai até onde precisa ir. Desta vida ou de outra.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">Parte 4</div>
+          <div class="step-title">A âncora e o retorno</div>
+          <p class="step-text">Você recebe a sua âncora e volta devagar, presente, trazendo com você o que viveu.</p>
+        </div>
+      </div>
+
+      <div class="prep">
+        <div class="prep-title">Para viver a experiência por inteiro<span>Prepare esse momento como um encontro marcado com você mesma.</span></div>
+        <ul class="prep-list">
+          <li>Fones de ouvido</li>
+          <li>Um lugar tranquilo, onde ninguém vá te interromper</li>
+          <li>Uma posição confortável, sentada ou deitada</li>
+          <li>Celular no silencioso e carregando</li>
+          <li>Um copo de água por perto</li>
+          <li>Nunca participe dirigindo ou fazendo outra atividade</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
+  <!-- =============== 6. QUEM CONDUZ =============== -->
   <section>
     <div class="section">
       <div class="about-grid">
         <div class="about-image-wrap">
           <div class="about-image-frame">
-            <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/Lucas_vers%C3%A3o_frequencias_camjuq.webp" alt="Lucas Radin" class="about-image">
+            <!-- Se tiver outra foto (de preferência atendendo ou em ambiente de sessão), troque aqui para não repetir a imagem do topo -->
+            <img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/q_auto/f_auto/v1779378319/Lucas_vers%C3%A3o_frequencias_camjuq.webp" alt="Lucas Radin" class="about-image" loading="lazy">
           </div>
         </div>
         <div class="about-text">
           <div class="section-eyebrow">Quem vai conduzir</div>
           <h2 class="section-title">Lucas Radin<br><em>Hipnoterapeuta</em></h2>
-          <p>Por anos eu fiz as coisas certas. Mudei de país. Trabalhei. Busquei. E ainda assim sentia que faltava algo — um propósito, um para quê. Um vazio que eu não conseguia explicar.</p>
+          <p>Por anos eu fiz as coisas certas. Mudei de país. Trabalhei. Busquei. E ainda assim sentia que faltava algo. Um propósito, um para quê. Um vazio que eu não conseguia explicar.</p>
           <p>Foi nessa busca que encontrei o Ho'oponopono. E foi ele que me levou até a hipnoterapia... não por acaso, eu acredito. Foi um dos maiores presentes que meu Eu Superior já me deu.</p>
           <p>Quando me dei conta, estava na maior escola de hipnoterapia do mundo, no centro de São Paulo, vendo algo que nunca tinha visto antes: <strong>pessoas se transformando com o poder das próprias mentes.</strong></p>
           <p>Tive uma cliente que não conseguia confiar em si mesma. Depois de uma sessão, ela passou em duas universidades federais. Um homem em depressão profunda me mandou um áudio dizendo que a vontade de viver tinha voltado. <strong>Isso não tem preço.</strong></p>
           <p>Em oito anos de atendimentos, testemunhei e confirmei: <strong>o problema nunca é o problema.</strong> Sempre é algo mais profundo. E quando você chega lá, não é você que muda o problema. É o problema que deixa de existir.</p>
           <div class="about-stats">
-            <div class="stat"><span class="stat-number">8+</span><span class="stat-label">Anos de hipnoterapia</span></div>
-            <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Online — de onde você estiver</span></div>
+            <div class="stat"><span class="stat-number">8+</span><span class="stat-label">anos de hipnoterapia</span></div>
+            <div class="stat"><span class="stat-number">+100</span><span class="stat-label">participantes nas últimas edições</span></div>
+            <div class="stat"><span class="stat-number">100%</span><span class="stat-label">online, de onde você estiver</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <div class="divider"></div>
+  <section>
+    <div class="section">
+      <div class="section-eyebrow">Quem já viveu</div>
+      <h2 class="section-title">O que contam <em>depois do Reencontro</em></h2>
+      <div class="testimonials">
+        <figure class="testimonial-img"><img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/v1792751083/experiencia-hipnose-depoimento_4_r0wykb.webp" alt="Relato de participante do Reencontro" loading="lazy" width="800" height="1000"></figure>
+        <figure class="testimonial-img"><img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/v1792751370/experiencia-hipnose-depoimento_2_y7pjat.webp" alt="Relato de participante do Reencontro" loading="lazy" width="800" height="1000"></figure>
+        <figure class="testimonial-img"><img src="https://res.cloudinary.com/dmfh6y6rs/image/upload/v1792751370/experiencia-hipnose-depoimento_3_uzhfsx.webp" alt="Relato de participante do Reencontro" loading="lazy" width="800" height="1000"></figure>
+      </div>
+    </div>
+  </section>
 
-<section class="cta-section" id="cta">
+  <!-- =============== 8. OFERTA =============== -->
+  <section class="cta-section" id="cta">
     <div class="cta-inner">
-      <div class="section-eyebrow" style="justify-content:center;margin-bottom:20px;">Garanta sua vaga</div>
+      <div class="section-eyebrow center">Garanta sua vaga</div>
       <h2 class="cta-title">O Reencontro</h2>
-      <p class="cta-subtitle">29 de outubro · 19h · Ao vivo</p>
+      <p class="cta-subtitle">Quinta, 29 de outubro · 19h · Ao vivo</p>
+      <p class="permission">Você cuida de tanta coisa.<br>Essa noite é para você.</p>
+
       <div class="cta-box">
+        <div class="includes-title">O que está incluído</div>
+        <ul class="includes">
+          <li><span class="check">✓</span>Experiência ao vivo de hipnose coletiva com Lucas Radin</li>
+          <li><span class="check">✓</span>Jornada de regressão guiada pelo seu Eu Superior</li>
+          <li><span class="check">✓</span>Sua âncora emocional para usar sempre que precisar</li>
+          <li><span class="check">✓</span>Gravação disponível por 7 dias</li>
+          <li><span class="check">✓</span>Grupo exclusivo da experiência no WhatsApp</li>
+        </ul>
+
         <div class="cta-details">
-          <div class="cta-detail"><div class="cta-detail-label">Data</div><div class="cta-detail-value">29 de outubro de 2026</div></div>
-          <div class="cta-detail"><div class="cta-detail-label">Horário</div><div class="cta-detail-value">19h00 (Brasília)</div></div>
-          <div class="cta-detail"><div class="cta-detail-label">Formato</div><div class="cta-detail-value">Ao vivo · Online</div></div>
-          <div class="cta-detail"><div class="cta-detail-label">Gravação</div><div class="cta-detail-value">Disponível por 7 dias</div></div>
+          <div><div class="cta-detail-label">Data</div><div class="cta-detail-value">29 de outubro</div></div>
+          <div><div class="cta-detail-label">Horário</div><div class="cta-detail-value">19h (Brasília)</div></div>
+          <div><div class="cta-detail-label">Formato</div><div class="cta-detail-value">Google Meet</div></div>
         </div>
 
-        <!-- CONTADOR PARA O EVENTO -->
-        <div style="margin: 28px 0 0;">
-          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">A experiência começa em</div>
-          <div style="display:flex; justify-content:center; gap:16px; margin-bottom:24px;">
-            <div style="text-align:center;">
-              <div id="count-dias" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--white); line-height:1;">00</div>
-              <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:4px;">dias</div>
-            </div>
-            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gold); line-height:1;">:</div>
-            <div style="text-align:center;">
-              <div id="count-horas" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--white); line-height:1;">00</div>
-              <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:4px;">horas</div>
-            </div>
-            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gold); line-height:1;">:</div>
-            <div style="text-align:center;">
-              <div id="count-min" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--white); line-height:1;">00</div>
-              <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:4px;">min</div>
-            </div>
-            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gold); line-height:1;">:</div>
-            <div style="text-align:center;">
-              <div id="count-seg" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--white); line-height:1;">00</div>
-              <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:4px;">seg</div>
-            </div>
+        <div class="countdown-wrap">
+          <div class="countdown-label" id="count-label">A experiência começa em</div>
+          <div class="countdown" id="countdown">
+            <div class="cd-unit"><div class="cd-num" id="count-dias">00</div><div class="cd-lab">dias</div></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-unit"><div class="cd-num" id="count-horas">00</div><div class="cd-lab">horas</div></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-unit"><div class="cd-num" id="count-min">00</div><div class="cd-lab">min</div></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-unit"><div class="cd-num" id="count-seg">00</div><div class="cd-lab">seg</div></div>
           </div>
         </div>
 
-        <!-- PREÇO -->
         <div class="cta-price-wrap">
           <div class="cta-price-label">Investimento</div>
           <div class="cta-price"><span>R$</span> 137</div>
-          <div class="cta-price-note">PIX ou parcelado em até 12x com juros</div>
+          <div class="cta-price-note">PIX ou parcelado em até 12x (com juros)</div>
         </div>
 
-        <a href="https://pay.kiwify.com.br/j87CVEP" class="btn-cta" target="_blank" onclick="gtag('event', 'click_compra', {'event_category': 'workshop', 'event_label': 'cta_final'})">Quero participar →</a>
+        <div class="cta-btn-wrap">
+          <a href="https://pay.kiwify.com.br/j87CVEP" class="btn-cta" onclick="track('cta_final')">Quero participar →</a>
+          <p class="secure-note">🔒 Pagamento seguro pela Kiwify</p>
+        </div>
       </div>
-      <a href="https://wa.me/5547984263837?text=Quero%20suporte%20para%20a%20experi%C3%AAncia%20de%20hipnose" class="whatsapp-btn" target="_blank">
-        💬 Falar com suporte pelo WhatsApp
-      </a>
+
+      <p class="whatsapp-link">Ficou com alguma dúvida? <a href="https://wa.me/5547984263837?text=Quero%20suporte%20para%20a%20experi%C3%AAncia%20de%20hipnose" target="_blank" rel="noopener">Fale com a gente no WhatsApp</a></p>
     </div>
   </section>
 
-  <script>
-    // Data do evento: 29 de outubro de 2026 às 19h (Brasília)
-    const dataEvento = new Date('2026-10-29T19:00:00-03:00');
+  <div class="divider"></div>
 
-    function atualizarContador() {
-      const agora = new Date();
-      const diff = dataEvento - agora;
+  <!-- =============== 9. PERGUNTAS FREQUENTES =============== -->
+  <section id="faq">
+    <div class="section faq-wrap">
+      <div class="section-eyebrow">Dúvidas</div>
+      <h2 class="section-title">Perguntas <em>frequentes</em></h2>
 
-      if (diff <= 0) {
-        document.getElementById('count-dias').textContent = '00';
-        document.getElementById('count-horas').textContent = '00';
-        document.getElementById('count-min').textContent = '00';
-        document.getElementById('count-seg').textContent = '00';
-        return;
-      }
+      <div class="faq">
+        <details>
+          <summary>Nunca fiz hipnose. Será que eu consigo?</summary>
+          <div class="faq-answer">
+            <p>Sim. A hipnose é um estado natural que você já vive todos os dias: quando está totalmente concentrada em um filme, quando dirige no "piloto automático", quando está quase dormindo mas ainda escuta tudo.</p>
+            <p>Na experiência, eu só te guio até esse estado de forma intencional e segura. <strong>Você não precisa "conseguir" nada.</strong> Basta estar disposta a viver a experiência e seguir as orientações.</p>
+          </div>
+        </details>
 
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seg = Math.floor((diff % (1000 * 60)) / 1000);
+        <details>
+          <summary>Vou perder o controle ou a consciência?</summary>
+          <div class="faq-answer">
+            <p>Não. Durante toda a experiência você está consciente, ouvindo tudo, e pode abrir os olhos quando quiser. Você não "apaga" e ninguém te faz fazer nada contra a sua vontade.</p>
+            <p>O que acontece é um relaxamento profundo, parecido com aquele momento antes de dormir, em que a mente consciente descansa e a parte mais profunda fica mais acessível.</p>
+          </div>
+        </details>
 
-      document.getElementById('count-dias').textContent = String(dias).padStart(2, '0');
-      document.getElementById('count-horas').textContent = String(horas).padStart(2, '0');
-      document.getElementById('count-min').textContent = String(min).padStart(2, '0');
-      document.getElementById('count-seg').textContent = String(seg).padStart(2, '0');
-    }
+        <details>
+          <summary>E se vier uma vida passada? E se não vier nada?</summary>
+          <div class="faq-answer">
+            <p>As duas coisas estão certas. Algumas pessoas visitam memórias de outras vidas, outras vão para momentos desta vida, outras não veem imagens e sentem no corpo, ou simplesmente recebem uma paz que não sentiam há muito tempo.</p>
+            <p><strong>Não existe jeito certo de viver O Reencontro.</strong> Não crie expectativa sobre o que deveria aparecer. O que vier é exatamente o que você precisava viver naquela noite.</p>
+          </div>
+        </details>
 
-    atualizarContador();
-    setInterval(atualizarContador, 1000);
-  </script>
+        <details>
+          <summary>Qual a diferença entre essa experiência e uma sessão individual?</summary>
+          <div class="faq-answer">
+            <p>Na experiência em grupo, você vive o estado de hipnose, se reconecta com você e leva uma âncora para acessar esse estado no dia a dia.</p>
+            <p>A sessão individual do Método REVELAR é outro trabalho: um encontro só seu, com tempo para ir até a raiz de uma questão específica que te acompanha. Muitas pessoas conhecem a hipnose pelo Reencontro e depois escolhem esse caminho.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>E se eu não puder assistir ao vivo?</summary>
+          <div class="faq-answer">
+            <p>A gravação fica disponível por 7 dias depois do evento, então você pode viver a experiência no momento que for melhor para você nesse período.</p>
+            <p>Se puder, participe ao vivo. A energia do grupo, todo mundo junto naquele momento, faz diferença.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Como eu recebo o acesso?</summary>
+          <div class="faq-answer">
+            <p>Logo depois da inscrição, você recebe a confirmação por e-mail com o acesso à área de membros e o convite para o grupo exclusivo da experiência no WhatsApp. É por lá que chegam o link do Google Meet e todas as orientações.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Faço terapia ou tomo medicação. Posso participar?</summary>
+          <div class="faq-answer">
+            <p>Pode. A hipnose caminha bem junto com outros acompanhamentos e não substitui tratamento médico ou psicológico.</p>
+            <p>Se você está passando por um momento de crise ou faz tratamento psiquiátrico, <a href="https://wa.me/5547984263837?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20antes%20de%20me%20inscrever%20no%20Reencontro" target="_blank" rel="noopener">me chama no WhatsApp antes de se inscrever</a> para conversarmos com calma.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Quais são as formas de pagamento?</summary>
+          <div class="faq-answer">
+            <p>PIX ou cartão de crédito em até 12x (com juros). O pagamento é feito com segurança pela Kiwify.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== 10. FECHAMENTO =============== -->
+  <section class="closing">
+    <p class="closing-text">Você não precisa se tornar outra pessoa.<br><em>Só precisa se lembrar de quem é.</em></p>
+    <a href="https://pay.kiwify.com.br/j87CVEP" class="btn-cta" onclick="track('fechamento')">Quero garantir minha vaga →</a>
+  </section>
 
   <footer>
     <div class="footer-name">Lucas Radin</div>
-    <p class="footer-text">lucasradin.com.br · Hipnoterapeuta · Método REVELAR</p>
+    <p class="footer-text">lucasradin.com.br · Hipnoterapeuta · Método REVELAR<br>A hipnoterapia não substitui acompanhamento médico ou psicológico.</p>
   </footer>
+
+  <!-- Barra fixa no celular: aparece depois que o botão do topo sai da tela -->
+  <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <div class="sticky-info"><strong>O Reencontro</strong>29/10 · 19h · R$ 137</div>
+    <a href="https://pay.kiwify.com.br/j87CVEP" class="sticky-btn" onclick="track('sticky_mobile')" tabindex="-1">Garantir vaga</a>
+  </div>
+
+  <script>
+    // ----- Contador: 29 de outubro de 2026 às 19h (Brasília) -----
+    (function(){
+      var dataEvento = new Date('2026-10-29T19:00:00-03:00');
+      var el = {
+        d: document.getElementById('count-dias'),
+        h: document.getElementById('count-horas'),
+        m: document.getElementById('count-min'),
+        s: document.getElementById('count-seg'),
+        label: document.getElementById('count-label'),
+        box: document.getElementById('countdown')
+      };
+      if (!el.d) return;
+      function pad(n){ return String(n).padStart(2, '0'); }
+      function tick(){
+        var diff = dataEvento - new Date();
+        if (diff <= 0) {
+          el.label.textContent = 'A experiência já começou';
+          el.box.style.display = 'none';
+          return false;
+        }
+        el.d.textContent = pad(Math.floor(diff / 86400000));
+        el.h.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+        el.m.textContent = pad(Math.floor((diff % 3600000) / 60000));
+        el.s.textContent = pad(Math.floor((diff % 60000) / 1000));
+        return true;
+      }
+      if (tick()) {
+        var t = setInterval(function(){ if (!tick()) clearInterval(t); }, 1000);
+      }
+    })();
+
+    // ----- Barra fixa: some no topo e na seção de oferta -----
+    (function(){
+      var sticky = document.getElementById('sticky-cta');
+      var heroCta = document.getElementById('hero-cta');
+      var offer = document.getElementById('cta');
+      if (!sticky || !heroCta || !offer || !('IntersectionObserver' in window)) return;
+      var heroVisible = true, offerVisible = false;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.target === heroCta) heroVisible = e.isIntersecting;
+          if (e.target === offer) offerVisible = e.isIntersecting;
+        });
+        var show = !heroVisible && !offerVisible;
+        sticky.classList.toggle('show', show);
+        sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
+        sticky.querySelector('a').tabIndex = show ? 0 : -1;
+      });
+      io.observe(heroCta);
+      io.observe(offer);
+    })();
+  </script>
 
 </body>
 </html>
